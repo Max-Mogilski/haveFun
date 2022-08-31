@@ -20,13 +20,13 @@ const Sidebar = () => {
 				<nav className={styles.links}>
 					<ul>
 						<li>
-							<NavLink exact to="/" activeClassName={styles.active}>
+							<NavLink to="/">
 								<img src={DashboardIcon} alt="dashboard icon"></img>
 								<span>Games</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/profile" activeClassName={styles.active}>
+							<NavLink to="/profile">
 								<img src={UserIcon} alt="user icon"></img>
 								<span>Profile</span>
 							</NavLink>

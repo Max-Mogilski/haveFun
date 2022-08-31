@@ -36,15 +36,15 @@
 				li {
 					padding: 1rem;
 					a {
+						width: 200%;
 						display: flex;
-						justify-content: center;
+						justify-content: start;
 						align-items: center;
+						margin-left: 1rem;
+						padding: 0.5rem;
 						text-align: center;
 						text-decoration: none;
 						color: #fff;
-						&.active {
-							color: black;
-						}
 						img {
 							filter: invert(100%);
 						}

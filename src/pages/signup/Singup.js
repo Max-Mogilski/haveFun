@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 import styles from "./Singup.module.scss";
 
 const Singup = () => {
@@ -7,11 +8,12 @@ const Singup = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [displayName, setDisplayName] = useState("");
 	const [passwordMatch, setPasswordMatch] = useState(true);
+	const { signup, error, isPending } = useSignup();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			console.log(email, password, displayName);
+			signup(email, password, displayName);
 			setPasswordMatch(true);
 		} else {
 			setPasswordMatch(false);

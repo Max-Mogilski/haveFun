@@ -6,7 +6,6 @@ const Navbar = () => {
 		<nav className={styles.navbar}>
 			<ul>
 				<li className={styles.logo}>
-					{/* <img /> */}
 					<Link to="/">
 						have<span>Fun</span>
 					</Link>
