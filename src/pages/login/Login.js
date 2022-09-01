@@ -5,7 +5,7 @@ import styles from "./Login.module.scss";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { login, isPending, error } = useLogin();
+	const { login } = useLogin();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

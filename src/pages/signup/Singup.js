@@ -8,7 +8,7 @@ const Singup = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [displayName, setDisplayName] = useState("");
 	const [passwordMatch, setPasswordMatch] = useState(true);
-	const { signup, error, isPending } = useSignup();
+	const { signup } = useSignup();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -21,7 +21,7 @@ const Singup = () => {
 	};
 	return (
 		<form onSubmit={handleSubmit} className={styles["auth-form"]}>
-			<h2>Login</h2>
+			<h2>Signup</h2>
 			<label>
 				<span>email:</span>
 				<input
