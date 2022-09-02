@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 import { ACTIONS } from "../auth-actions/Actions";
@@ -8,6 +8,7 @@ export const useSignup = () => {
 	const { dispatch } = useAuthContext();
 	const [error, setError] = useState(null);
 	const [isPending, setIsPending] = useState(false);
+	const [isCancelled, setIsCancelled] = useState(false);
 
 	const signup = async (email, password, displayName) => {
 		setError(null);
@@ -19,10 +20,18 @@ export const useSignup = () => {
 			dispatch({ type: ACTIONS.SIGNUP, payload: res.user });
 		} catch (error) {
 			console.log(error.message);
-			setError(error.message);
+			if (!isCancelled) {
+				setError(error.message);
+			}
 		} finally {
-			setIsPending(false);
+			if (!isCancelled) {
+				setIsPending(false);
+			}
 		}
 	};
+
+	useEffect(() => {
+		return () => setIsCancelled(true);
+	}, []);
 	return { signup, error, isPending };
 };
