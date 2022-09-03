@@ -5,7 +5,7 @@ import styles from "./App.module.scss";
 // pages&components
 import Navbar from "./components/navigation/Navbar";
 import Sidebar from "./components/navigation/Sidebar";
-import { useAuthContext } from "./hooks/useAuthContext";
+import { useAuthContext } from "./hooks/auth/useAuthContext";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";

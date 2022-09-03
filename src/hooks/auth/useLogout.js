@@ -1,22 +1,23 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/config";
-import { ACTIONS } from "../auth-actions/Actions";
+import { auth } from "../../firebase/config";
+import { ACTIONS } from "../../auth-actions/Actions";
 import { useAuthContext } from "./useAuthContext";
 
-export const useLogin = () => {
+export const useLogout = () => {
 	const { dispatch } = useAuthContext();
 	const [error, setError] = useState(null);
-	const [isPending, setIsPending] = useState(false);
+	const [isPending, setIsPending] = useState(null);
 	const [isCancelled, setIsCancelled] = useState(false);
 
-	const login = async (email, password) => {
-		setError(null);
-		setIsPending(true);
+	const logout = async () => {
 		try {
-			const res = await signInWithEmailAndPassword(auth, email, password);
+			setError(null);
+			setIsPending(true);
 
-			dispatch({ type: ACTIONS.SIGNIN, payload: res.user });
+			await signOut(auth);
+
+			dispatch({ type: ACTIONS.LOGOUT });
 		} catch (error) {
 			console.log(error.message);
 			if (!isCancelled) {
@@ -31,5 +32,5 @@ export const useLogin = () => {
 	useEffect(() => {
 		return () => setIsCancelled(true);
 	}, []);
-	return { login, error, isPending };
+	return { logout, error, isPending };
 };

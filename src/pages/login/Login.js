@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLogin } from "../../hooks/useLogin";
+import { useLogin } from "../../hooks/auth/useLogin";
 import styles from "./Login.module.scss";
 
 const Login = () => {

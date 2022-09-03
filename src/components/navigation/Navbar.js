@@ -1,7 +1,7 @@
 //styles
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/auth/useAuthContext";
+import { useLogout } from "../../hooks/auth/useLogout";
 import styles from "./Navbar.module.scss";
 const Navbar = () => {
 	const { user } = useAuthContext();

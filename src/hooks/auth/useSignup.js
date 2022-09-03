@@ -1,8 +1,9 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../../firebase/config";
 import { useAuthContext } from "./useAuthContext";
-import { ACTIONS } from "../auth-actions/Actions";
+import { ACTIONS } from "../../auth-actions/Actions";
+import { doc, setDoc, Timestamp } from "firebase/firestore";
 
 export const useSignup = () => {
 	const { dispatch } = useAuthContext();
@@ -15,11 +16,29 @@ export const useSignup = () => {
 		setIsPending(true);
 		try {
 			const res = await createUserWithEmailAndPassword(auth, email, password);
-			updateProfile(res.user, { displayName });
+			if (!res) {
+				throw new Error("Could not create user!");
+			}
+			const { user } = res;
+			await updateProfile(user, { displayName });
 
-			dispatch({ type: ACTIONS.SIGNUP, payload: res.user });
+			await setDoc(doc(db, "users", user.uid), {
+				id: user.uid,
+				email: user.email,
+				displayName: user.displayName,
+				online: true,
+				photoURL: user.photoURL,
+				accountCreatedAt: Timestamp.fromDate(new Date()),
+				balance: 0,
+				friends: [],
+				notifications: true,
+				notificationsList: [],
+				transactions: [],
+			});
+
+			dispatch({ type: ACTIONS.SIGNUP, payload: user });
 		} catch (error) {
-			console.log(error.message);
+			console.log(error);
 			if (!isCancelled) {
 				setError(error.message);
 			}
