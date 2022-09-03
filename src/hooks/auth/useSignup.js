@@ -27,6 +27,7 @@ export const useSignup = () => {
 				email: user.email,
 				displayName: user.displayName,
 				online: true,
+				lvl: 0,
 				photoURL: user.photoURL,
 				accountCreatedAt: Timestamp.fromDate(new Date()),
 				balance: 0,

@@ -6,7 +6,6 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { login } = useLogin();
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(email, password);

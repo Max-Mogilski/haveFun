@@ -15,8 +15,16 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div className={styles["sidebar-content"]}>
 				<div className={styles.user}>
-					<Avatar src={user.photoURL ? user.photoURL : UserStarterAvatar} />
-					<p className={styles.name}>Hello {user.displayName}</p>
+					<Avatar
+						src={
+							document && document.photoURL
+								? document.photoURL
+								: UserStarterAvatar
+						}
+					/>
+					<p className={styles.name}>
+						Hello {document && document.displayName}
+					</p>
 					<p className={styles.balance}>
 						Balance: {document && document.balance.toFixed(2)}$
 					</p>
