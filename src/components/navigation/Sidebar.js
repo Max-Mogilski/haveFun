@@ -15,13 +15,16 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div className={styles["sidebar-content"]}>
 				<div className={styles.user}>
-					<Avatar
-						src={
-							document && document.photoURL
-								? document.photoURL
-								: UserStarterAvatar
-						}
-					/>
+					{document && (
+						<Avatar
+							src={
+								document && document.photoURL
+									? document.photoURL
+									: UserStarterAvatar
+							}
+						/>
+					)}
+					{!document && <Avatar src="loading" />}
 					<p className={styles.name}>
 						Hello {document && document.displayName}
 					</p>

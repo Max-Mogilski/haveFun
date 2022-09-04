@@ -5,7 +5,7 @@ import styles from "./Login.module.scss";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { login } = useLogin();
+	const { login, isPending } = useLogin();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(email, password);
@@ -31,7 +31,12 @@ const Login = () => {
 					type="password"
 				/>
 			</label>
-			<button className="btn">Login</button>
+			{!isPending && <button className="btn">Login</button>}
+			{isPending && (
+				<button className="btn" disabled>
+					Loading...
+				</button>
+			)}
 		</form>
 	);
 };

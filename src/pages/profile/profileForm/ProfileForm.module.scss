@@ -1,0 +1,68 @@
+.settings-form {
+	width: 40%;
+	.checkboxs {
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		.toggle-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 1rem 0;
+			width: 20rem;
+			.toggle {
+				visibility: hidden;
+				&:checked + .label {
+					background-color: var(--primary-color);
+				}
+				&:checked + .label .ball {
+					animation: slideOn 0.3s linear forwards;
+				}
+			}
+			.label {
+				position: relative;
+				display: inline-block;
+				width: 10rem;
+				height: 2rem;
+				margin: 0 15px 0;
+				background-color: #d0d0d0;
+				border-radius: 50px;
+				cursor: pointer;
+				.ball {
+					position: absolute;
+					height: 2rem;
+					width: 2.1rem;
+					border-radius: 50%;
+					background: #fff;
+					align-items: center;
+					justify-content: center;
+					animation: slideOff 0.3s linear forwards;
+				}
+			}
+		}
+	}
+}
+
+@keyframes slideOn {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(0.8rem);
+	}
+	100% {
+		transform: translateX(1.3rem);
+	}
+}
+
+@keyframes slideOff {
+	0% {
+		transform: translateX(1.3rem);
+	}
+	50% {
+		transform: translateX(0.8rem);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}

@@ -8,7 +8,7 @@ const Singup = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [displayName, setDisplayName] = useState("");
 	const [passwordMatch, setPasswordMatch] = useState(true);
-	const { signup } = useSignup();
+	const { signup, isPending } = useSignup();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -58,7 +58,12 @@ const Singup = () => {
 					type="text"
 				/>
 			</label>
-			<button className="btn">Signup</button>
+			{!isPending && <button className="btn">Signup</button>}
+			{isPending && (
+				<button className="btn" disabled>
+					Loading...
+				</button>
+			)}
 			{!passwordMatch && <p className="error">Passwords do not match</p>}
 		</form>
 	);

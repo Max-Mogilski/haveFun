@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../../firebase/config";
-import { ACTIONS } from "../../auth-actions/Actions";
+import { ACTIONS } from "../../actions/auth/Actions";
 import { useAuthContext } from "./useAuthContext";
 import { useUpdateDocument } from "../data/useUpdateDocument";
 
