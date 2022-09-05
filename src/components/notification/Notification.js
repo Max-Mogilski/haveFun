@@ -2,15 +2,11 @@ import styles from "./Notification.module.scss";
 import CloseIcon from "../../assets/close-icon.svg";
 import { ReactComponent as WarningIcon } from "../../assets/warning.svg";
 import { ACTIONS } from "../../actions/notification/Actions";
-import { useAuthContext } from "../../hooks/auth/useAuthContext";
-import { useDocument } from "../../hooks/data/useDocument";
 
 const Notification = ({ notificationObj, dispatchNotification }) => {
-	const { user } = useAuthContext();
-	const { document } = useDocument("users", user.uid);
 	return (
 		<>
-			{notificationObj.message && document && document.notifications && (
+			{notificationObj.show && (
 				<div className={styles["notification-container"]}>
 					<button
 						onClick={() => {

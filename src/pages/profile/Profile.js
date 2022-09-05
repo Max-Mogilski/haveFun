@@ -1,16 +1,14 @@
 import Avatar from "../../components/avatar/Avatar";
-import { useAuthContext } from "../../hooks/auth/useAuthContext";
 import styles from "./Profile.module.scss";
 import UserInitAvatar from "../../assets/user-start.svg";
 import ProfileForm from "./profileForm/ProfileForm";
 import AvatarUpdate from "./updateAvatar/AvatarUpdate";
 import { useState } from "react";
-import { useDocument } from "../../hooks/data/useDocument";
+import { useUserDocument } from "../../hooks/data/useUserDocument";
 
 const Profile = () => {
 	const [error, setError] = useState(null);
-	const { user } = useAuthContext();
-	const { document } = useDocument("users", user.uid);
+	const { document } = useUserDocument("users");
 
 	return (
 		<div className={styles["profile-settings"]}>

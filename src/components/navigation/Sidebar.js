@@ -4,12 +4,10 @@ import UserIcon from "../../assets/user.svg";
 import UserStarterAvatar from "../../assets/user-start.svg";
 import { NavLink } from "react-router-dom";
 import Avatar from "../avatar/Avatar";
-import { useAuthContext } from "../../hooks/auth/useAuthContext";
-import { useDocument } from "../../hooks/data/useDocument";
+import { useUserDocument } from "../../hooks/data/useUserDocument";
 
 const Sidebar = () => {
-	const { user } = useAuthContext();
-	const { document } = useDocument("users", user.uid);
+	const { document } = useUserDocument("users");
 
 	return (
 		<div className={styles.sidebar}>

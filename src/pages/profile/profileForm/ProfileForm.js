@@ -3,23 +3,45 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ACTIONS } from "../../../actions/notification/Actions";
 import { useAuthContext } from "../../../hooks/auth/useAuthContext";
-import { useDocument } from "../../../hooks/data/useDocument";
+import { useUserDocument } from "../../../hooks/data/useUserDocument";
 import { useUpdateDocument } from "../../../hooks/data/useUpdateDocument";
 import { useNotificationContext } from "../../../hooks/notification/useNotificationContext";
 import styles from "./ProfileForm.module.scss";
 
 const ProfileForm = () => {
 	const { user } = useAuthContext();
-	const { document } = useDocument("users", user.uid);
+	const { document } = useUserDocument("users");
 	const [displayName, setDisplayName] = useState(user && user.displayName);
 	const [email, setEmail] = useState(user && user.email);
 	const { updateDocument, isPending } = useUpdateDocument();
 	const navigate = useNavigate();
 	const { dispatchNotification } = useNotificationContext();
-	const [showNotification, setShowNotification] = useState(true);
+	const [notifications, setNotifications] = useState(true);
 
-	const handleSubmit = async (e) => {
+	const saveProfile = async () => {
+		await updateDocument("users", user.uid, {
+			email,
+			displayName,
+			notifications,
+		});
+
+		await updateProfile(user, { email, displayName });
+
+		if (user.email !== email) {
+			await updateEmail(user, email);
+		}
+
+		navigate("/");
+
+		dispatchNotification({
+			type: ACTIONS.SUCCESS,
+			payload: "Profile has been saved",
+		});
+	};
+
+	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (displayName.trim().length === 0 || email.trim().length === 0) {
 			dispatchNotification({
 				type: ACTIONS.ERROR,
@@ -27,35 +49,19 @@ const ProfileForm = () => {
 			});
 			return;
 		}
-		if (
-			user.email !== email ||
-			user.displayName !== displayName ||
-			user.notifications !== showNotification
-		) {
-			if (showNotification) {
-				dispatchNotification({ type: ACTIONS.NOTIFICATION_ON });
-			} else {
-				dispatchNotification({ type: ACTIONS.NOTIFICATION_OFF });
-			}
-			await updateDocument("users", user.uid, {
-				email,
-				displayName,
-				notifications: showNotification,
+		if (displayName.length > 15 || email.length > 20) {
+			dispatchNotification({
+				type: ACTIONS.ERROR,
+				payload: "Email or user name is too long!",
 			});
-			await updateProfile(user, { email, displayName });
+			return;
 		}
-		navigate("/");
-		if (user.email !== email) {
-			await updateEmail(user, email);
-		}
-		dispatchNotification({
-			type: ACTIONS.SUCCESS,
-			payload: "Profile has been saved",
-		});
+
+		saveProfile();
 	};
 	useEffect(() => {
 		if (document) {
-			setShowNotification(document.notifications);
+			setNotifications(document.notifications);
 		}
 	}, [document]);
 	return (
@@ -65,7 +71,7 @@ const ProfileForm = () => {
 				<input
 					required
 					value={displayName}
-					onChange={(e) => setDisplayName(e.target.value)}
+					onChange={(e) => setDisplayName(e.target.value.split(" ").join(""))}
 					type="text"
 				/>
 			</label>
@@ -74,7 +80,7 @@ const ProfileForm = () => {
 				<input
 					required
 					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					onChange={(e) => setEmail(e.target.value.split(" ").join(""))}
 					type="email"
 				/>
 			</label>
@@ -84,9 +90,9 @@ const ProfileForm = () => {
 						className={styles.toggle}
 						id="notifications"
 						type="checkbox"
-						checked={showNotification}
+						checked={notifications}
 						onChange={(e) => {
-							setShowNotification(e.target.checked);
+							setNotifications(e.target.checked);
 						}}
 					/>
 					<label htmlFor="notifications" className={styles.label}>

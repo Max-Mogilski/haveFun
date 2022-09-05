@@ -9,11 +9,13 @@ import { useRef, useState } from "react";
 import { ACTIONS } from "../../../actions/notification/Actions";
 import { useAuthContext } from "../../../hooks/auth/useAuthContext";
 import { useUpdateDocument } from "../../../hooks/data/useUpdateDocument";
+import { useUserDataContext } from "../../../hooks/data/useUserDataContext";
 import { useNotificationContext } from "../../../hooks/notification/useNotificationContext";
 import styles from "./AvatarUpdate.module.scss";
 
 const AvatarUpdate = ({ setError }) => {
 	const { user } = useAuthContext();
+	const { document } = useUserDataContext();
 	const storageRef = ref(getStorage(), `images/${user.uid}.jpg`);
 	const { updateDocument } = useUpdateDocument();
 	const inputRef = useRef(null);
@@ -25,6 +27,15 @@ const AvatarUpdate = ({ setError }) => {
 	};
 
 	const handleDelete = async () => {
+		if (document) {
+			if (!document.photoURL) {
+				dispatchNotification({
+					type: ACTIONS.ERROR,
+					payload: "Cannot remove stock avatar image!",
+				});
+				return;
+			}
+		}
 		await deleteObject(storageRef);
 		await updateDocument("users", user.uid, { photoURL: null });
 		dispatchNotification({
