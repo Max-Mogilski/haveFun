@@ -13,6 +13,7 @@ const notificationReducer = (state, action) => {
 					error: true,
 					success: false,
 					message: action.payload,
+					show: state.show ? state.show : true,
 				},
 			};
 		case ACTIONS.SUCCESS:
@@ -21,10 +22,25 @@ const notificationReducer = (state, action) => {
 					error: false,
 					success: true,
 					message: action.payload,
+					show: state.show ? state.show : true,
 				},
 			};
 		case ACTIONS.CLEAR:
 			return { notification: null };
+		case ACTIONS.NOTIFICATION_OFF:
+			return {
+				notification: {
+					...state.notification,
+					show: false,
+				},
+			};
+		case ACTIONS.NOTIFICATION_ON:
+			return {
+				notification: {
+					...state.notification,
+					show: true,
+				},
+			};
 		default:
 			return state;
 	}
@@ -35,12 +51,13 @@ export const NotificationContextProvider = ({ children }) => {
 		notification: null,
 	});
 
+	console.log(state);
+
 	if (state.notification) {
 		setTimeout(() => {
 			dispatchNotification({ type: ACTIONS.CLEAR });
 		}, 5000);
 	}
-
 
 	return (
 		<NotificationContext.Provider value={{ ...state, dispatchNotification }}>

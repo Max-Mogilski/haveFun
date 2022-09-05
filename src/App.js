@@ -7,7 +7,6 @@ import Navbar from "./components/navigation/Navbar";
 import Sidebar from "./components/navigation/Sidebar";
 import Notification from "./components/notification/Notification";
 import { useAuthContext } from "./hooks/auth/useAuthContext";
-import { useDocument } from "./hooks/data/useDocument";
 import { useNotificationContext } from "./hooks/notification/useNotificationContext";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -16,7 +15,7 @@ import Singup from "./pages/signup/Singup";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
-	const { notification } = useNotificationContext();
+	const { notification, dispatchNotification } = useNotificationContext();
 
 	return (
 		<div className={styles.app}>
@@ -50,7 +49,12 @@ function App() {
 							)}
 						</Routes>
 					</div>
-					{notification && <Notification notificationObj={notification} />}
+					{notification && (
+						<Notification
+							notificationObj={notification}
+							dispatchNotification={dispatchNotification}
+						/>
+					)}
 				</BrowserRouter>
 			)}
 		</div>

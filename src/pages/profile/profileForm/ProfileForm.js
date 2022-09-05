@@ -1,19 +1,22 @@
 import { updateEmail, updateProfile } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ACTIONS } from "../../../actions/notification/Actions";
 import { useAuthContext } from "../../../hooks/auth/useAuthContext";
+import { useDocument } from "../../../hooks/data/useDocument";
 import { useUpdateDocument } from "../../../hooks/data/useUpdateDocument";
 import { useNotificationContext } from "../../../hooks/notification/useNotificationContext";
 import styles from "./ProfileForm.module.scss";
 
 const ProfileForm = () => {
 	const { user } = useAuthContext();
+	const { document } = useDocument("users", user.uid);
 	const [displayName, setDisplayName] = useState(user && user.displayName);
 	const [email, setEmail] = useState(user && user.email);
-	const { updateDocument, isPending, error } = useUpdateDocument();
+	const { updateDocument, isPending } = useUpdateDocument();
 	const navigate = useNavigate();
-	const { notification, dispatchNotification } = useNotificationContext();
+	const { dispatchNotification } = useNotificationContext();
+	const [showNotification, setShowNotification] = useState(true);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -24,15 +27,37 @@ const ProfileForm = () => {
 			});
 			return;
 		}
-		if (user.email !== email || user.displayName !== displayName) {
-			await updateDocument("users", user.uid, { email, displayName });
+		if (
+			user.email !== email ||
+			user.displayName !== displayName ||
+			user.notifications !== showNotification
+		) {
+			if (showNotification) {
+				dispatchNotification({ type: ACTIONS.NOTIFICATION_ON });
+			} else {
+				dispatchNotification({ type: ACTIONS.NOTIFICATION_OFF });
+			}
+			await updateDocument("users", user.uid, {
+				email,
+				displayName,
+				notifications: showNotification,
+			});
 			await updateProfile(user, { email, displayName });
 		}
 		navigate("/");
 		if (user.email !== email) {
 			await updateEmail(user, email);
 		}
+		dispatchNotification({
+			type: ACTIONS.SUCCESS,
+			payload: "Profile has been saved",
+		});
 	};
+	useEffect(() => {
+		if (document) {
+			setShowNotification(document.notifications);
+		}
+	}, [document]);
 	return (
 		<form className={styles["settings-form"]} onSubmit={handleSubmit}>
 			<label className={styles.fields}>
@@ -55,7 +80,15 @@ const ProfileForm = () => {
 			</label>
 			<div className={styles.checkboxs}>
 				<div className={styles["toggle-container"]}>
-					<input className={styles.toggle} id="notifications" type="checkbox" />
+					<input
+						className={styles.toggle}
+						id="notifications"
+						type="checkbox"
+						checked={showNotification}
+						onChange={(e) => {
+							setShowNotification(e.target.checked);
+						}}
+					/>
 					<label htmlFor="notifications" className={styles.label}>
 						<div className={styles.ball}></div>
 					</label>
@@ -68,7 +101,6 @@ const ProfileForm = () => {
 					Saving...
 				</button>
 			)}
-			{error && <p className="error">{error}</p>}
 		</form>
 	);
 };
