@@ -1,5 +1,9 @@
 import { useUserDataContext } from "../../hooks/data/useUserDataContext";
 import styles from "./Transactions.module.scss";
+import { ReactComponent as PlusIcon } from "../../assets/add.svg";
+import { ReactComponent as ArrowIcon } from "../../assets/arrow.svg";
+import TransactionsList from "./transactionsList/TransactionsList";
+import { Link } from "react-router-dom";
 
 const Transactions = () => {
 	const { document } = useUserDataContext();
@@ -13,11 +17,21 @@ const Transactions = () => {
 						<span>USD</span>
 					</p>
 					<div className={styles["balance-buttons"]}>
-						<button className="btn">Add</button>
-						<button className="btn">Send</button>
+						<Link to={"add"}>
+							<button className="btn">
+								<PlusIcon fill="#8d69f1" className={styles.icon} />
+								<span>Add</span>
+							</button>
+						</Link>
+						<button className="btn">
+							<ArrowIcon fill="#8d69f1" className={styles.icon} />
+							<span>Send</span>
+						</button>
 					</div>
 				</div>
-				<div className={styles["transactions-content"]}></div>
+				<div className={styles["transactions-content"]}>
+					<TransactionsList />
+				</div>
 			</div>
 			<div className={styles["transactions-chart"]}></div>
 		</div>

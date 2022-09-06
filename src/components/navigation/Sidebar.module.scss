@@ -16,9 +16,18 @@
 			text-align: center;
 			letter-spacing: 1px;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-			.balance {
-				padding: 0 0 2rem 0;
-				font-size: 1rem;
+			.balance-content {
+				padding: 0.5rem;
+				display: flex;
+				.add-icon {
+					&:hover {
+						scale: 1.02;
+					}
+				}
+				.balance {
+					padding: 0 0.2rem 2rem 0;
+					font-size: 1rem;
+				}
 			}
 			.name {
 				padding: 1rem 0 0;

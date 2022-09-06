@@ -1,0 +1,70 @@
+.add-money-container {
+	height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	.add-btn {
+		width: 30%;
+		border-radius: 10px;
+		margin-top: 1rem;
+		color: #fff;
+		background-color: var(--primary-color);
+	}
+	.add-money-card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 30%;
+		width: 50%;
+		border-radius: 10px;
+		margin-top: 3rem;
+		padding: 2rem;
+		background-color: #fff;
+		.add-money-content {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.balance {
+				width: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-direction: column;
+				span {
+					font-size: 1.6rem;
+				}
+				.amount {
+					color: var(--text-color);
+				}
+			}
+			.input-field {
+				width: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: flex-end;
+				flex-direction: column;
+				color: var(--text-color);
+				input {
+					font-size: 1.6rem;
+					text-align: right;
+					border: none;
+				}
+			}
+		}
+		.add-money-buttons {
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			padding-top: 1rem;
+			button {
+				border-radius: 10px;
+				padding: 0.5 1rem;
+				margin: 0.2rem;
+			}
+		}
+	}
+}

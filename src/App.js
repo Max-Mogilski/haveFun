@@ -8,6 +8,7 @@ import Sidebar from "./components/navigation/Sidebar";
 import Notification from "./components/notification/Notification";
 import { useAuthContext } from "./hooks/auth/useAuthContext";
 import { useNotificationContext } from "./hooks/notification/useNotificationContext";
+import AddTransaction from "./pages/addTransaction/AddTransaction";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
@@ -31,6 +32,7 @@ function App() {
 									<Route path="/" element={<Home />} />
 									<Route path="profile" element={<Profile />} />
 									<Route path="transactions" element={<Transactions />} />
+									<Route path="transactions/add" element={<AddTransaction />} />
 								</>
 							) : (
 								<>
@@ -38,6 +40,10 @@ function App() {
 									<Route path="/profile" element={<Navigate to="/login" />} />
 									<Route
 										path="transactions"
+										element={<Navigate to="/login" />}
+									/>
+									<Route
+										path="transactions/add"
 										element={<Navigate to="/login" />}
 									/>
 								</>
