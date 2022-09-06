@@ -4,10 +4,11 @@ import UserIcon from "../../assets/user.svg";
 import UserStarterAvatar from "../../assets/user-start.svg";
 import { NavLink } from "react-router-dom";
 import Avatar from "../avatar/Avatar";
-import { useUserDocument } from "../../hooks/data/useUserDocument";
+import { useUserDataContext } from "../../hooks/data/useUserDataContext";
+import MoneyIcon from "../../assets/money.svg";
 
 const Sidebar = () => {
-	const { document } = useUserDocument("users");
+	const { document } = useUserDataContext();
 
 	return (
 		<div className={styles.sidebar}>
@@ -15,11 +16,7 @@ const Sidebar = () => {
 				<div className={styles.user}>
 					{document && (
 						<Avatar
-							src={
-								document && document.photoURL
-									? document.photoURL
-									: UserStarterAvatar
-							}
+							src={document.photoURL ? document.photoURL : UserStarterAvatar}
 						/>
 					)}
 					{!document && <Avatar src="loading" />}
@@ -42,6 +39,12 @@ const Sidebar = () => {
 							<NavLink to="/profile">
 								<img src={UserIcon} alt="user icon"></img>
 								<span>Profile</span>
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/transactions">
+								<img src={MoneyIcon} alt="user icon"></img>
+								<span>Transactions</span>
 							</NavLink>
 						</li>
 					</ul>

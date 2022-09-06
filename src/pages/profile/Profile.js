@@ -4,12 +4,11 @@ import UserInitAvatar from "../../assets/user-start.svg";
 import ProfileForm from "./profileForm/ProfileForm";
 import AvatarUpdate from "./updateAvatar/AvatarUpdate";
 import { useState } from "react";
-import { useUserDocument } from "../../hooks/data/useUserDocument";
+import { useUserDataContext } from "../../hooks/data/useUserDataContext";
 
 const Profile = () => {
 	const [error, setError] = useState(null);
-	const { document } = useUserDocument("users");
-
+	const { document } = useUserDataContext();
 	return (
 		<div className={styles["profile-settings"]}>
 			<h2>Edit profile</h2>

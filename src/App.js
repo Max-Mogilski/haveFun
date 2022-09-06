@@ -12,6 +12,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Singup from "./pages/signup/Singup";
+import Transactions from "./pages/transactions/Transactions";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
@@ -29,11 +30,16 @@ function App() {
 								<>
 									<Route path="/" element={<Home />} />
 									<Route path="profile" element={<Profile />} />
+									<Route path="transactions" element={<Transactions />} />
 								</>
 							) : (
 								<>
 									<Route path="/" element={<Navigate to="/login" />} />
 									<Route path="/profile" element={<Navigate to="/login" />} />
+									<Route
+										path="transactions"
+										element={<Navigate to="/login" />}
+									/>
 								</>
 							)}
 							{!user ? (
