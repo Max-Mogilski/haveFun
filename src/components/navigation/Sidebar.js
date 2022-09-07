@@ -26,7 +26,7 @@ const Sidebar = () => {
 					</p>
 					<div className={styles["balance-content"]}>
 						<p className={styles.balance}>
-							Balance: {document && document.balance.toFixed(2)}$
+							Balance: {document && document.balance.toFixed(2) / 1000}$
 						</p>
 						<Link to={"/transactions"}>
 							<AddIcon fill="#fff" className={styles["add-icon"]} />

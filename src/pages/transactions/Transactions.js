@@ -13,7 +13,7 @@ const Transactions = () => {
 				<div className={styles["balance-content"]}>
 					<div className={styles["money-icon"]}></div>
 					<p>
-						{document && document.balance.toFixed(2)}
+						{document && document.balance.toFixed(2) / 1000}
 						<span>USD</span>
 					</p>
 					<div className={styles["balance-buttons"]}>

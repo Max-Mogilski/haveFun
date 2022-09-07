@@ -8,7 +8,7 @@ import styles from "./AddTransaction.module.scss";
 
 const AddTransaction = () => {
 	const { document } = useUserDataContext();
-	const [amount, setAmount] = useState("");
+	const [amount, setAmount] = useState(0);
 	const { dispatchNotification } = useNotificationContext();
 	const { updateDocument, isPending, error } = useUpdateDocument();
 	const navigate = useNavigate();
@@ -22,17 +22,28 @@ const AddTransaction = () => {
 			});
 			return;
 		}
+
 		if (document) {
-			if (document.balance > 100000) {
+			if (document.balance / 1000 > 100000) {
 				dispatchNotification({
 					type: ACTIONS.ERROR,
 					payload: "Your balance is too high!",
 				});
 				return;
 			}
+
+			if (amount > 10000) {
+				dispatchNotification({
+					type: ACTIONS.ERROR,
+					payload: "Cannot add more than 10000$!",
+				});
+				return;
+			}
+
 			await updateDocument("users", document.id, {
-				balance: document.balance + amount,
+				balance: document.balance + (Math.round(amount * 100) / 100) * 1000,
 			});
+
 			if (error) {
 				dispatchNotification({
 					type: ACTIONS.ERROR,
@@ -40,7 +51,9 @@ const AddTransaction = () => {
 				});
 				return;
 			}
+
 			navigate("/");
+
 			dispatchNotification({
 				type: ACTIONS.SUCCESS,
 				payload: "Money has been successfully added!",
@@ -55,7 +68,7 @@ const AddTransaction = () => {
 					<div className={styles.balance}>
 						<span>USD</span>
 						<p className={styles["amount"]}>
-							Balance: {document && document.balance.toFixed(2)}$
+							Balance: {document && document.balance.toFixed(2) / 1000}$
 						</p>
 					</div>
 					<div className={styles["input-field"]}>
