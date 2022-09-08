@@ -1,9 +1,11 @@
-import { useUserDataContext } from "../../../hooks/data/useUserDataContext";
+import { useState } from "react";
 import Transaction from "../transaction/Transaction";
 import styles from "./TransactionsList.module.scss";
 
-const TransactionsList = () => {
-	const { document } = useUserDataContext();
+const TransactionsList = ({ transactions }) => {
+	const [showAll, setShowAll] = useState(false);
+	let listLength = 0;
+
 	return (
 		<div className={styles["transactions-container"]}>
 			<div className={styles["transactions-header"]}>
@@ -11,13 +13,24 @@ const TransactionsList = () => {
 					<p>Transactions</p>
 				</div>
 				<div className={styles["transactions-show"]}>
-					<p>Show all</p>
+					{!showAll && (
+						<button onClick={() => setShowAll(true)}>Show all</button>
+					)}
+					{showAll && <button onClick={() => setShowAll(false)}>Hide</button>}
 				</div>
 			</div>
-			<div>
-				{document && document.transactions.length !== 0 ? (
-					document.transactions.map((transaction) => {
-						return <Transaction transaction={transaction} />;
+			<div className={styles["transactions-list"]}>
+				{transactions && transactions.length !== 0 ? (
+					transactions.map((transaction) => {
+						let itemToReturn = "";
+						listLength++;
+
+						if (listLength < 3 || showAll) {
+							itemToReturn = (
+								<Transaction transaction={transaction} key={transaction.id} />
+							);
+						}
+						return itemToReturn;
 					})
 				) : (
 					<p>List of transactions is empty!</p>

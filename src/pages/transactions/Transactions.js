@@ -4,9 +4,21 @@ import { ReactComponent as PlusIcon } from "../../assets/add.svg";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow.svg";
 import TransactionsList from "./transactionsList/TransactionsList";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Loading from "../../components/loading/Loading";
 
 const Transactions = () => {
 	const { document } = useUserDataContext();
+	const [transactions, setTransactions] = useState(null);
+
+	useEffect(() => {
+		if (document) {
+			setTransactions(
+				document.transactions.sort((a, b) => b.createdAt - a.createdAt)
+			);
+		}
+	}, [document]);
+
 	return (
 		<div className={styles["transactions-container"]}>
 			<div className={styles["transactions-card"]}>
@@ -14,7 +26,7 @@ const Transactions = () => {
 					<div className={styles["money-icon"]}></div>
 					<p>
 						{document && document.balance.toFixed(2) / 1000}
-						<span>USD</span>
+						<span className={styles.unit}>USD</span>
 					</p>
 					<div className={styles["balance-buttons"]}>
 						<Link to={"add"}>
@@ -29,8 +41,14 @@ const Transactions = () => {
 						</button>
 					</div>
 				</div>
-				<div className={styles["transactions-content"]}>
-					<TransactionsList />
+				<div className={!document && styles["transactions-content"]}>
+					{document ? (
+						<TransactionsList transactions={transactions} />
+					) : (
+						<div className={styles["loading-container"]}>
+							<Loading />
+						</div>
+					)}
 				</div>
 			</div>
 			<div className={styles["transactions-chart"]}></div>

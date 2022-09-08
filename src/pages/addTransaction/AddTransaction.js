@@ -1,9 +1,11 @@
+import { Timestamp } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ACTIONS } from "../../actions/notification/Actions";
 import { useUpdateDocument } from "../../hooks/data/useUpdateDocument";
 import { useUserDataContext } from "../../hooks/data/useUserDataContext";
 import { useNotificationContext } from "../../hooks/notification/useNotificationContext";
+import { useTransaction } from "../../hooks/transactions/useTransaction";
 import styles from "./AddTransaction.module.scss";
 
 const AddTransaction = () => {
@@ -12,6 +14,7 @@ const AddTransaction = () => {
 	const { dispatchNotification } = useNotificationContext();
 	const { updateDocument, isPending, error } = useUpdateDocument();
 	const navigate = useNavigate();
+	const { addTransaction } = useTransaction();
 
 	const handleAddMoney = async (e) => {
 		e.preventDefault();
@@ -44,6 +47,15 @@ const AddTransaction = () => {
 				balance: document.balance + (Math.round(amount * 100) / 100) * 1000,
 			});
 
+			await addTransaction({
+				type: "add",
+				amount: amount,
+				balance: document.balance + (Math.round(amount * 100) / 100) * 1000,
+				title: "Money deposit",
+				createdAt: Timestamp.fromDate(new Date()),
+				id: Math.random(),
+			});
+
 			if (error) {
 				dispatchNotification({
 					type: ACTIONS.ERROR,
@@ -52,7 +64,7 @@ const AddTransaction = () => {
 				return;
 			}
 
-			navigate("/");
+			navigate("/transactions");
 
 			dispatchNotification({
 				type: ACTIONS.SUCCESS,
