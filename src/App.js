@@ -9,6 +9,7 @@ import Notification from "./components/notification/Notification";
 import { useAuthContext } from "./hooks/auth/useAuthContext";
 import { useNotificationContext } from "./hooks/notification/useNotificationContext";
 import AddTransaction from "./pages/addTransaction/AddTransaction";
+import ScratchCard from "./pages/home/games/scratch-card/ScratchCard";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
@@ -30,6 +31,9 @@ function App() {
 							{user ? (
 								<>
 									<Route path="/" element={<Home />} />
+									<Route path="scratch-card" element={<ScratchCard />} />
+									<Route path="slot-machine" element={<Navigate to="/" />} />
+									<Route path="lucky-wheel" element={<Navigate to="/" />} />
 									<Route path="profile" element={<Profile />} />
 									<Route path="transactions" element={<Transactions />} />
 									<Route path="transactions/add" element={<AddTransaction />} />
@@ -37,6 +41,10 @@ function App() {
 							) : (
 								<>
 									<Route path="/" element={<Navigate to="/login" />} />
+									<Route
+										path="scratch-card"
+										element={<Navigate to="/login" />}
+									/>
 									<Route path="/profile" element={<Navigate to="/login" />} />
 									<Route
 										path="transactions"

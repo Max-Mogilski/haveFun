@@ -5,11 +5,15 @@
 	flex-direction: column;
 	background: #fff;
 	border-radius: 20px;
-	width: 30%;
+	width: 29%;
 	height: 20%;
 	cursor: pointer;
 	text-decoration: none;
 	color: var(--text-color);
+	margin: 0 2rem 2rem 0;
+	img {
+		width: 100%;
+	}
 	p {
 		padding: 1rem;
 		font-size: 1.2rem;

@@ -4,7 +4,24 @@ import ScratchIcon from "../../assets/scratchIcon.svg";
 
 const Home = () => {
 	const games = [
-		{ title: "Scratch card", photoURL: ScratchIcon, ref: "scratch-card" },
+		{
+			title: "Scratch card",
+			photoURL: ScratchIcon,
+			ref: "scratch-card",
+			isReady: true,
+		},
+		{
+			title: "Slot machine",
+			photoURL: ScratchIcon,
+			ref: "slot-machine",
+			isReady: false,
+		},
+		{
+			title: "Lucky wheel",
+			photoURL: ScratchIcon,
+			ref: "lucky-wheel",
+			isReady: false,
+		},
 	];
 	return (
 		<div className={styles["games-container"]}>

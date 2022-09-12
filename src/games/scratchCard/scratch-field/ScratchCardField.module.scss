@@ -1,0 +1,14 @@
+.scratch-card {
+	height: 7rem;
+	width: 7rem;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 1rem;
+	p {
+		user-select: none;
+	}
+}
