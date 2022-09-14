@@ -9,6 +9,9 @@ const Canvas = () => {
 	};
 
 	let totalFilled = 0;
+	let mousedownEvent;
+	let mouseupEvent;
+	let mousemoveEvent;
 
 	const init = () => {
 		const ctx = canvasRef.current.getContext("2d");
@@ -27,30 +30,40 @@ const Canvas = () => {
 			ctx.fill();
 		};
 
-		canvasRef.current.addEventListener("mousedown", (event) => {
-			mouse.x = event.clientX - rectLeft;
-			mouse.y = event.clientY - rectTop;
-			scratch();
-			isTouching = true;
-		});
+		mousedownEvent = canvasRef.current.addEventListener(
+			"mousedown",
+			(event) => {
+				mouse.x = event.clientX - rectLeft;
+				mouse.y = event.clientY - rectTop;
+				scratch();
+				isTouching = true;
+			}
+		);
 
-		canvasRef.current.addEventListener("mouseup", (event) => {
+		mouseupEvent = canvasRef.current.addEventListener("mouseup", (event) => {
 			isTouching = false;
 		});
 
-		canvasRef.current.addEventListener("mousemove", (event) => {
-			mouse.x = event.clientX - rectLeft;
-			mouse.y = event.clientY - rectTop;
-			if (isTouching) {
-				scratch();
+		mousemoveEvent = canvasRef.current.addEventListener(
+			"mousemove",
+			(event) => {
+				mouse.x = event.clientX - rectLeft;
+				mouse.y = event.clientY - rectTop;
+				totalFilled += 1;
+				if (isTouching) {
+					scratch();
+				}
+				if (totalFilled > 150) {
+					ctx.clearRect(0, 0, 200, 200);
+				}
 			}
-			if (totalFilled > 150) {
-				ctx.clearRect(0, 0, 200, 200);
-			}
-		});
+		);
 	};
 
 	useEffect(() => {
+		canvasRef.current.removeEventListener("mousedown", mousedownEvent);
+		canvasRef.current.removeEventListener("mouseup", mouseupEvent);
+		canvasRef.current.removeEventListener("mousemove", mousemoveEvent);
 		if (canvasRef) {
 			init();
 		}
