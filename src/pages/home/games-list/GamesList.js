@@ -6,7 +6,7 @@ const GamesList = ({ games }) => {
 	return (
 		<div className={styles["games-list"]}>
 			{games.map((game) => (
-				<GameCard game={game} />
+				<GameCard game={game} key={Math.random()} />
 			))}
 		</div>
 	);
