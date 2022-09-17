@@ -4,8 +4,23 @@ import { ReactComponent as CoinIcon } from "../assets/coin.svg";
 import { ReactComponent as PiggyIcon } from "../assets/piggy.svg";
 
 export const items = [
-	{ name: "diamond", image: DiamondIcon, chances: 2 },
-	{ name: "moneyCoin", image: MoneyIcon, chances: 10 },
-	{ name: "money", image: CoinIcon, chances: 20 },
+	{
+		name: "diamond",
+		image: DiamondIcon,
+		chances: 2,
+		multiplier: [0, 0, 300, 500],
+	},
+	{
+		name: "moneyCoin",
+		image: CoinIcon,
+		chances: 10,
+		multiplier: [0, 0, 50, 100],
+	},
+	{
+		name: "money",
+		image: MoneyIcon,
+		chances: 20,
+		multiplier: [0, 0, 5, 10],
+	},
 	{ name: "piggy", image: PiggyIcon, chances: 78 },
 ];

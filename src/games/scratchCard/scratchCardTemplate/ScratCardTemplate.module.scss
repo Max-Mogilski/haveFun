@@ -1,8 +1,23 @@
 .game-container {
 	width: 50%;
-	height: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
+	min-height: 50%;
+	border-radius: 10px;
+	.scratch-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 2rem;
+		font-size: 2rem;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: 0.1rem;
+		border-bottom: 1px solid white;
+	}
+	.scratch-card-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 1rem;
+	}
 }

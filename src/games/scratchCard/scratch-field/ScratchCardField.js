@@ -1,10 +1,10 @@
 import Canvas from "../../../components/canvas/Canvas";
 import styles from "./ScratchCardField.module.scss";
 
-const ScratCardField = ({ Image }) => {
+const ScratCardField = ({ Image, options }) => {
 	return (
 		<div className={styles["scratch-card"]}>
-			<Canvas />
+			<Canvas options={options} />
 			<Image style={{ padding: "2rem" }} />
 		</div>
 	);

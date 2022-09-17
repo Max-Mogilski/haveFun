@@ -7,7 +7,7 @@ const Home = () => {
 		{
 			title: "Scratch card",
 			photoURL: ScratchIcon,
-			ref: "scratch-card",
+			ref: "scratch-card-list",
 			isReady: true,
 		},
 		{

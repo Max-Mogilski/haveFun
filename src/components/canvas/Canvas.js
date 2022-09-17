@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Canvas = () => {
+const Canvas = ({ options }) => {
 	const canvasRef = useRef(null);
 
 	const mouse = {
@@ -20,7 +20,7 @@ const Canvas = () => {
 		const rectLeft = canvasRef.current.getBoundingClientRect().left;
 		const rectTop = canvasRef.current.getBoundingClientRect().top;
 
-		ctx.fillStyle = "#333333";
+		ctx.fillStyle = options.tilesColor;
 		ctx.fillRect(0, 0, 200, 200);
 
 		const scratch = () => {
