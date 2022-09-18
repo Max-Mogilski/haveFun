@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useGame } from "../../../hooks/games/useGame";
 import { useRandom } from "../../../hooks/random/useRandom";
 import ScratCardField from "../scratch-field/ScratchCardField";
 import styles from "./ScratCardTemplate.module.scss";
@@ -6,10 +7,17 @@ import styles from "./ScratCardTemplate.module.scss";
 const ScratchCardTemplate = ({ items, length, options }) => {
 	const [gameItems, setGameItems] = useState(null);
 	const { generateRandomArray } = useRandom(items, length);
+	const { winGame } = useGame();
 
 	useEffect(() => {
 		setGameItems(generateRandomArray());
 	}, [generateRandomArray]);
+
+	useEffect(() => {
+		if (gameItems) {
+			winGame(gameItems);
+		}
+	}, [gameItems, winGame]);
 
 	return (
 		<div

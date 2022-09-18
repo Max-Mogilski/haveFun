@@ -19,10 +19,12 @@ import Transactions from "./pages/transactions/Transactions";
 
 //game items
 import { items } from "./games-data/scratch-card/data/items";
+import { useUserDataContext } from "./hooks/data/useUserDataContext";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
 	const { notification, dispatchNotification } = useNotificationContext();
+	const { isAllowedToPlay } = useUserDataContext();
 
 	return (
 		<div className={styles.app}>
@@ -39,54 +41,73 @@ function App() {
 										path="scratch-card-list"
 										element={<ScratchCardList />}
 									/>
-									<Route
-										path="/scratch-card-20"
-										element={
-											<ScratchCardGame
-												items={items}
-												length={9}
-												options={{
-													backGroundColor: "#8d69f1",
-													tilesColor: "#8d69f1",
-													title: "Scratch me!",
-													titleColor: "#fff",
-													borderColor: "#000",
-												}}
+									{isAllowedToPlay ? (
+										<>
+											<Route
+												path="/scratch-card-20"
+												element={
+													<ScratchCardGame
+														items={items}
+														length={9}
+														options={{
+															backGroundColor: "#8d69f1",
+															tilesColor: "#8d69f1",
+															title: "Scratch me!",
+															titleColor: "#fff",
+															borderColor: "#000",
+														}}
+													/>
+												}
 											/>
-										}
-									/>
-									<Route
-										path="/scratch-card-50"
-										element={
-											<ScratchCardGame
-												items={items}
-												length={9}
-												options={{
-													backGroundColor: "#fc466b",
-													tilesColor: "#fc466b",
-													title: "Scratch me!",
-													titleColor: "#fff",
-													borderColor: "#000",
-												}}
+											<Route
+												path="/scratch-card-50"
+												element={
+													<ScratchCardGame
+														items={items}
+														length={9}
+														options={{
+															backGroundColor: "#fc466b",
+															tilesColor: "#fc466b",
+															title: "Scratch me!",
+															titleColor: "#fff",
+															borderColor: "#000",
+														}}
+													/>
+												}
 											/>
-										}
-									/>
-									<Route
-										path="/scratch-card-100"
-										element={
-											<ScratchCardGame
-												items={items}
-												length={9}
-												options={{
-													backGroundColor: "#3f5efb",
-													tilesColor: "#3f5efb",
-													title: "Scratch me!",
-													titleColor: "#fff",
-													borderColor: "#000",
-												}}
+											<Route
+												path="/scratch-card-100"
+												element={
+													<ScratchCardGame
+														items={items}
+														length={9}
+														options={{
+															backGroundColor: "#3f5efb",
+															tilesColor: "#3f5efb",
+															title: "Scratch me!",
+															titleColor: "#fff",
+															borderColor: "#000",
+														}}
+													/>
+												}
 											/>
-										}
-									/>
+										</>
+									) : (
+										<>
+											<Route
+												path="/scratch-card-20"
+												element={<Navigate to="/scratch-card-list" />}
+											/>
+											<Route
+												path="/scratch-card-50"
+												element={<Navigate to="/scratch-card-list" />}
+											/>
+											<Route
+												path="/scratch-card-100"
+												element={<Navigate to="/scratch-card-list" />}
+											/>
+										</>
+									)}
 									<Route path="slot-machine" element={<Navigate to="/" />} />
 									<Route path="lucky-wheel" element={<Navigate to="/" />} />
 									<Route path="profile" element={<Profile />} />

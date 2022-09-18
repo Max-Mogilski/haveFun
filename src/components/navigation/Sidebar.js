@@ -15,18 +15,19 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div className={styles["sidebar-content"]}>
 				<div className={styles.user}>
-					{document && (
+					{document && document.photoURL ? (
 						<Avatar
 							src={document.photoURL ? document.photoURL : UserStarterAvatar}
 						/>
+					) : (
+						<Avatar src="loading" />
 					)}
-					{!document && <Avatar src="loading" />}
 					<p className={styles.name}>
 						Hello {document && document.displayName}
 					</p>
 					<div className={styles["balance-content"]}>
 						<p className={styles.balance}>
-							Balance: {document && document.balance.toFixed(2) / 1000}$
+							Balance: {document && document.balance}$
 						</p>
 						<Link to={"/transactions"}>
 							<AddIcon fill="#fff" className={styles["add-icon"]} />

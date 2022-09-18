@@ -12,7 +12,7 @@ const Transactions = () => {
 	const [transactions, setTransactions] = useState(null);
 
 	useEffect(() => {
-		if (document) {
+		if (document && document.transactions) {
 			setTransactions(
 				document.transactions.sort((a, b) => b.createdAt - a.createdAt)
 			);
@@ -25,7 +25,7 @@ const Transactions = () => {
 				<div className={styles["balance-content"]}>
 					<div className={styles["money-icon"]}></div>
 					<p>
-						{document && document.balance.toFixed(2) / 1000}
+						{document && document.balance}
 						<span className={styles.unit}>USD</span>
 					</p>
 					<div className={styles["balance-buttons"]}>
@@ -41,8 +41,8 @@ const Transactions = () => {
 						</button>
 					</div>
 				</div>
-				<div className={!document && styles["transactions-content"]}>
-					{document ? (
+				<div className={styles["transactions-content"]}>
+					{document && transactions ? (
 						<TransactionsList transactions={transactions} />
 					) : (
 						<div className={styles["loading-container"]}>

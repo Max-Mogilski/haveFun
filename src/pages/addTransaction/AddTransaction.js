@@ -27,7 +27,7 @@ const AddTransaction = () => {
 		}
 
 		if (document) {
-			if (document.balance / 1000 > 100000) {
+			if (document.balance > 10000) {
 				dispatchNotification({
 					type: ACTIONS.ERROR,
 					payload: "Your balance is too high!",
@@ -44,7 +44,7 @@ const AddTransaction = () => {
 			}
 
 			await updateDocument("users", document.id, {
-				balance: document.balance + (Math.round(amount * 100) / 100) * 1000,
+				balance: document.balance * 1000 + (Math.round(amount * 100) / 100) * 1000,
 			});
 
 			await addTransaction({
@@ -80,7 +80,7 @@ const AddTransaction = () => {
 					<div className={styles.balance}>
 						<span>USD</span>
 						<p className={styles["amount"]}>
-							Balance: {document && document.balance.toFixed(2) / 1000}$
+							Balance: {document && document.balance}$
 						</p>
 					</div>
 					<div className={styles["input-field"]}>

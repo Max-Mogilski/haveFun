@@ -33,7 +33,7 @@ export const useSignup = () => {
 				balance: 0,
 				friends: [],
 				notifications: true,
-				notificationsList: [],
+				gameHistory: [],
 				transactions: [],
 			});
 
