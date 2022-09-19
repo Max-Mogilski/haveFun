@@ -1,0 +1,5 @@
+export const ACTIONS = {
+	UPDATE_GAME: "UPDATE_GAME",
+	SET_PRICE: "SET_PRICE",
+	CLEAR_GAME: "CLEAR_GAME",
+};

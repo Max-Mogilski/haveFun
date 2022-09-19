@@ -1,10 +1,11 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import { ACTIONS } from "../actions/notification/Actions";
 import { useUserDataContext } from "../hooks/data/useUserDataContext";
 
 export const NotificationContext = createContext();
 
 export const NotificationContextProvider = ({ children }) => {
+	const [isClearing, setIsClearing] = useState(false);
 	const { document } = useUserDataContext();
 
 	const notificationReducer = (state, action) => {
@@ -39,9 +40,13 @@ export const NotificationContextProvider = ({ children }) => {
 	});
 
 	if (state.notification) {
-		setTimeout(() => {
-			dispatchNotification({ type: ACTIONS.CLEAR });
-		}, 5000);
+		if (!isClearing) {
+			setTimeout(() => {
+				dispatchNotification({ type: ACTIONS.CLEAR });
+				setIsClearing(false);
+			}, 5000);
+			setIsClearing(true);
+		}
 	}
 
 	return (

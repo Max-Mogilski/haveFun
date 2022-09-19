@@ -15,7 +15,7 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div className={styles["sidebar-content"]}>
 				<div className={styles.user}>
-					{document && document.photoURL ? (
+					{document ? (
 						<Avatar
 							src={document.photoURL ? document.photoURL : UserStarterAvatar}
 						/>

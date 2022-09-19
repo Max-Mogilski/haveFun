@@ -7,7 +7,7 @@ import styles from "./ScratCardTemplate.module.scss";
 const ScratchCardTemplate = ({ items, length, options }) => {
 	const [gameItems, setGameItems] = useState(null);
 	const { generateRandomArray } = useRandom(items, length);
-	const { winGame } = useGame();
+	const { gameResult } = useGame();
 
 	useEffect(() => {
 		setGameItems(generateRandomArray());
@@ -15,9 +15,9 @@ const ScratchCardTemplate = ({ items, length, options }) => {
 
 	useEffect(() => {
 		if (gameItems) {
-			winGame(gameItems);
+			gameResult(gameItems);
 		}
-	}, [gameItems, winGame]);
+	}, [gameItems, gameResult]);
 
 	return (
 		<div
