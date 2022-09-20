@@ -27,15 +27,22 @@ export const useCalculateMultiplier = () => {
 		arryWithAmountOfItems.forEach((item) => {
 			if (!item.multiplier) return;
 			switch (item.count.toString()) {
+				case "0":
+					return;
+				case "1":
+					multiplier += item.multiplier[0];
+					return;
+				case "2":
+					multiplier += item.multiplier[1];
+					return;
 				case "3":
-					console.log("multiplier", item.multiplier[2]);
-					multiplier = item.multiplier[2];
+					multiplier += item.multiplier[2];
 					return;
 				case "4":
-					console.log("multiplier", item.multiplier[3]);
-					multiplier = item.multiplier[3];
+					multiplier += item.multiplier[3];
 					return;
 				default:
+					multiplier += item.multiplier[3];
 					return;
 			}
 		});

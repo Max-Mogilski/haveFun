@@ -24,10 +24,9 @@ const ScratchCardGame = ({ items, length, options }) => {
 			if (statistics.win > 0) {
 				addMoney(Math.round(statistics.win));
 				dispatchGame({ type: ACTIONS.CLEAR_GAME });
-				console.log("fire");
 			}
 		};
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [statistics.win, dispatchGame]);
 
 	return (

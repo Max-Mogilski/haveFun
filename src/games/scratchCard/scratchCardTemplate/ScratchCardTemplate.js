@@ -28,7 +28,6 @@ const ScratchCardTemplate = ({ items, length, options }) => {
 			const blankCanvas = document.createElement("canvas");
 			blankCanvas.width = canvas.width;
 			blankCanvas.height = canvas.height;
-			console.log(canvas.toDataURL() === blankCanvas.toDataURL());
 			if (canvas.toDataURL() === blankCanvas.toDataURL()) {
 				emptyCanvasNumber++;
 			}
