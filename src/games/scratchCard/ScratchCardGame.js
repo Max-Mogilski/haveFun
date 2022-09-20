@@ -12,6 +12,7 @@ const ScratchCardGame = ({ items, length, options }) => {
 	const { statistics } = useCurrentGameContex();
 	const { addMoney } = useMoney();
 	const { dispatchGame } = useCurrentGameContex();
+
 	useEffect(() => {
 		return () => {
 			endGame();
@@ -23,9 +24,12 @@ const ScratchCardGame = ({ items, length, options }) => {
 			if (statistics.win > 0) {
 				addMoney(Math.round(statistics.win));
 				dispatchGame({ type: ACTIONS.CLEAR_GAME });
+				console.log("fire");
 			}
 		};
-	});
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [statistics.win, dispatchGame]);
+
 	return (
 		<div className={styles["games-container"]}>
 			<ScratchCardTemplate items={items} length={length} options={options} />

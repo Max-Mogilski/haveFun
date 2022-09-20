@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { ACTIONS } from "../../../actions/game/Actions";
+import { useCurrentGameContex } from "../../../hooks/games/useCurrentGameContex";
 import { useGame } from "../../../hooks/games/useGame";
 import { useRandom } from "../../../hooks/random/useRandom";
 import ScratCardField from "../scratch-field/ScratchCardField";
@@ -8,6 +10,8 @@ const ScratchCardTemplate = ({ items, length, options }) => {
 	const [gameItems, setGameItems] = useState(null);
 	const { generateRandomArray } = useRandom(items, length);
 	const { gameResult } = useGame();
+	const { dispatchGame } = useCurrentGameContex();
+	let emptyCanvasNumber = 0;
 
 	useEffect(() => {
 		setGameItems(generateRandomArray());
@@ -18,6 +22,23 @@ const ScratchCardTemplate = ({ items, length, options }) => {
 			gameResult(gameItems);
 		}
 	}, [gameItems, gameResult]);
+
+	const isCanvasEmpty = useCallback(
+		(canvas) => {
+			const blankCanvas = document.createElement("canvas");
+			blankCanvas.width = canvas.width;
+			blankCanvas.height = canvas.height;
+			console.log(canvas.toDataURL() === blankCanvas.toDataURL());
+			if (canvas.toDataURL() === blankCanvas.toDataURL()) {
+				emptyCanvasNumber++;
+			}
+			if (emptyCanvasNumber === length) {
+				dispatchGame({ type: ACTIONS.SET_SHOW_RESULT, payload: true });
+			}
+			return canvas.toDataURL() === blankCanvas.toDataURL();
+		},
+		[emptyCanvasNumber, length, dispatchGame]
+	);
 
 	return (
 		<div
@@ -35,6 +56,7 @@ const ScratchCardTemplate = ({ items, length, options }) => {
 							Image={item.image}
 							options={options}
 							key={Math.random()}
+							isCanvasEmpty={isCanvasEmpty}
 						/>
 					))}
 			</div>

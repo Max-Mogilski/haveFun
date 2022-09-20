@@ -44,7 +44,8 @@ const AddTransaction = () => {
 			}
 
 			await updateDocument("users", document.id, {
-				balance: document.balance * 1000 + (Math.round(amount * 100) / 100) * 1000,
+				balance:
+					document.balance * 1000 + (Math.round(amount * 100) / 100) * 1000,
 			});
 
 			await addTransaction({

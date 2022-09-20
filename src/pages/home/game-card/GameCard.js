@@ -16,7 +16,11 @@ const GameCard = ({ game, action }) => {
 	return (
 		<div
 			className={styles["game-card"]}
-			onClick={game.price && game.price > document.balance && balanceFallback}>
+			onClick={
+				game.price && game.price > document.balance
+					? balanceFallback
+					: undefined
+			}>
 			{game.price <= document.balance || !game.price ? (
 				<Link
 					to={game.isReady ? game.ref : ""}

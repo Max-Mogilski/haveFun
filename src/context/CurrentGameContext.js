@@ -32,6 +32,11 @@ const gameReducer = (state, action) => {
 				price: 0,
 				gameItems: [],
 			};
+		case ACTIONS.SET_SHOW_RESULT:
+			return {
+				...state,
+				showResult: action.payload,
+			};
 		default:
 			return;
 	}
@@ -48,7 +53,6 @@ export const CurrentGameContextProvider = ({ children }) => {
 		price: 0,
 		gameItems: [],
 	});
-	console.log(state);
 	return (
 		<CurrentGameContext.Provider value={{ ...state, dispatchGame }}>
 			{children}

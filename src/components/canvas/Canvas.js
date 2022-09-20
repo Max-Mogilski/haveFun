@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Canvas = ({ options }) => {
+const Canvas = ({ options, isCanvasEmpty }) => {
 	const canvasRef = useRef(null);
 
 	const mouse = {
@@ -49,12 +49,15 @@ const Canvas = ({ options }) => {
 			(event) => {
 				mouse.x = event.clientX - rectLeft;
 				mouse.y = event.clientY - rectTop;
-				totalFilled += 1;
 				if (isTouching) {
+					totalFilled += 1;
 					scratch();
 				}
-				if (totalFilled > 150) {
+				if (totalFilled > 100) {
 					ctx.clearRect(0, 0, 200, 200);
+					if (totalFilled < 102) {
+						isCanvasEmpty(canvasRef.current);
+					}
 				}
 			}
 		);

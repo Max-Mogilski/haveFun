@@ -20,17 +20,21 @@ import Transactions from "./pages/transactions/Transactions";
 //game items
 import { items } from "./games-data/scratch-card/data/items";
 import { useUserDataContext } from "./hooks/data/useUserDataContext";
+import GameResult from "./pages/home/game-result/GameResult";
+import { useCurrentGameContex } from "./hooks/games/useCurrentGameContex";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
 	const { notification, dispatchNotification } = useNotificationContext();
 	const { isAllowedToPlay } = useUserDataContext();
+	const { showResult } = useCurrentGameContex();
 
 	return (
 		<div className={styles.app}>
 			{authIsReady && (
 				<BrowserRouter>
 					{user && <Sidebar />}
+					{showResult && <GameResult />}
 					<div className={styles.container}>
 						<Navbar />
 						<Routes>
