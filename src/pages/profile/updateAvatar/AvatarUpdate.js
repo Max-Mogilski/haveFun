@@ -6,21 +6,18 @@ import {
 	uploadBytes,
 } from "firebase/storage";
 import { useRef, useState } from "react";
-import { ACTIONS } from "../../../actions/notification/Actions";
 import { useAuthContext } from "../../../hooks/auth/useAuthContext";
 import { useUpdateDocument } from "../../../hooks/data/useUpdateDocument";
 import { useUserDataContext } from "../../../hooks/data/useUserDataContext";
-import { useNotificationContext } from "../../../hooks/notification/useNotificationContext";
 import styles from "./AvatarUpdate.module.scss";
 
-const AvatarUpdate = ({ setError }) => {
+const AvatarUpdate = ({ setError, setSuccess }) => {
 	const { user } = useAuthContext();
 	const { document } = useUserDataContext();
 	const storageRef = ref(getStorage(), `images/${user.uid}.jpg`);
 	const { updateDocument } = useUpdateDocument();
 	const inputRef = useRef(null);
 	const [isSavingAvatar, setIsSavingAvatar] = useState(false);
-	const { dispatchNotification } = useNotificationContext();
 
 	const handleUpdate = () => {
 		inputRef.current.click();
@@ -29,32 +26,30 @@ const AvatarUpdate = ({ setError }) => {
 	const handleDelete = async () => {
 		if (document) {
 			if (!document.photoURL) {
-				dispatchNotification({
-					type: ACTIONS.ERROR,
-					payload: "Cannot remove stock avatar image!",
-				});
+				setError("Cannot remove stock avatar image!");
 				return;
 			}
 		}
 		await deleteObject(storageRef);
-		await updateDocument("users", user.uid, { photoURL: null });
-		dispatchNotification({
-			type: ACTIONS.SUCCESS,
-			payload: "Avatar successfully removed!",
-		});
+		await updateDocument("users", user.uid, { photoURL: "start" });
+		setSuccess("Avatar successfully removed!");
 	};
 
 	const handleFileChange = async (event) => {
 		setIsSavingAvatar(true);
 		setError(null);
 		const fileObj = event.target.files && event.target.files[0];
+
 		if (!fileObj) {
 			return;
 		}
+
 		if (!fileObj.type.includes("image")) {
 			setError("Please select image file");
+			setIsSavingAvatar(false);
 			return;
 		}
+
 		event.target.value = null;
 
 		await uploadBytes(storageRef, fileObj);
@@ -63,10 +58,7 @@ const AvatarUpdate = ({ setError }) => {
 
 		await updateDocument("users", user.uid, { photoURL: photo });
 		setIsSavingAvatar(false);
-		dispatchNotification({
-			type: ACTIONS.SUCCESS,
-			payload: "Avatar successfully uploaded!",
-		});
+		setSuccess("Avatar successfully uploaded!");
 	};
 	return (
 		<div className={styles.buttons}>

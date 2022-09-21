@@ -1,7 +1,6 @@
 import styles from "./Sidebar.module.scss";
 import DashboardIcon from "../../assets/dashboard_icon.svg";
 import UserIcon from "../../assets/user.svg";
-import UserStarterAvatar from "../../assets/user-start.svg";
 import { Link, NavLink } from "react-router-dom";
 import Avatar from "../avatar/Avatar";
 import { ReactComponent as AddIcon } from "../../assets/add.svg";
@@ -15,10 +14,8 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div className={styles["sidebar-content"]}>
 				<div className={styles.user}>
-					{document ? (
-						<Avatar
-							src={document.photoURL ? document.photoURL : UserStarterAvatar}
-						/>
+					{document.photoURL ? (
+						<Avatar src={document.photoURL} />
 					) : (
 						<Avatar src="loading" />
 					)}

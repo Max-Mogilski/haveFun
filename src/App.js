@@ -1,3 +1,5 @@
+import React from "react";
+
 // React router
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // styles
@@ -7,8 +9,6 @@ import Navbar from "./components/navigation/Navbar";
 import Sidebar from "./components/navigation/Sidebar";
 import Notification from "./components/notification/Notification";
 import ScratchCardGame from "./games/scratchCard/ScratchCardGame";
-import { useAuthContext } from "./hooks/auth/useAuthContext";
-import { useNotificationContext } from "./hooks/notification/useNotificationContext";
 import AddTransaction from "./pages/addTransaction/AddTransaction";
 import ScratchCardList from "./pages/home/games/scratch-card/scratch-card-list/ScratchCardList";
 import Home from "./pages/home/Home";
@@ -16,6 +16,10 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Singup from "./pages/signup/Singup";
 import Transactions from "./pages/transactions/Transactions";
+
+// hooks
+import { useNotificationContext } from "./hooks/notification/useNotificationContext";
+import { useAuthContext } from "./hooks/auth/useAuthContext";
 
 //game items
 import { items } from "./games-data/scratch-card/data/items";

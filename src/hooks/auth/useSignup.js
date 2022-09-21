@@ -28,7 +28,7 @@ export const useSignup = () => {
 				displayName: user.displayName,
 				online: true,
 				lvl: 0,
-				photoURL: user.photoURL,
+				photoURL: "start",
 				accountCreatedAt: Timestamp.fromDate(new Date()),
 				balance: 0,
 				friends: [],
