@@ -65,3 +65,12 @@
 		}
 	}
 }
+
+@media (max-width: 600px) {
+	.transactions-container {
+		margin-top: 2rem;
+		.transactions-card {
+			width: 90%;
+		}
+	}
+}

@@ -5,6 +5,8 @@
 	width: 20rem;
 	height: 100vh;
 	background-color: var(--primary-color);
+	z-index: 1;
+	overflow: scroll;
 	.sidebar-content {
 		height: 100%;
 		width: 100%;
@@ -67,4 +69,8 @@
 	}
 }
 @media (max-width: 600px) {
+	.sidebar {
+		position: fixed;
+		display: none;
+	}
 }

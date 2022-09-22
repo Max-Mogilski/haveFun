@@ -91,3 +91,9 @@ textarea {
 .active img {
 	filter: invert(40%) !important;
 }
+
+@media (max-width: 600px) {
+	body {
+		overflow: scroll;
+	}
+}
