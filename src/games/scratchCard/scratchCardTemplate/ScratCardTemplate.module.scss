@@ -21,3 +21,9 @@
 		padding: 1rem;
 	}
 }
+
+@media (max-width: 600px) {
+	.game-container {
+		width: 90%;
+	}
+}

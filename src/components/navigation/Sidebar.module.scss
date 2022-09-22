@@ -1,13 +1,19 @@
 .sidebar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 20rem;
-	height: 100vh;
-	background-color: var(--primary-color);
+	width: 20%;
+	min-height: 100%;
 	z-index: 1;
 	overflow: scroll;
+	.mobile-sidebar {
+		display: none;
+		position: fixed;
+		width: 15%;
+		margin: 1.2rem;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
 	.sidebar-content {
+		background-color: var(--primary-color);
 		height: 100%;
 		width: 100%;
 		.user {
@@ -71,6 +77,11 @@
 @media (max-width: 600px) {
 	.sidebar {
 		position: fixed;
-		display: none;
+		.mobile-sidebar {
+			display: block;
+		}
+		.sidebar-content {
+			position: fixed;
+		}
 	}
 }

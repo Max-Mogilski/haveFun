@@ -43,3 +43,12 @@
 	cursor: pointer;
 	// transition: transform 1s linear;
 }
+
+@media (max-width: 600px) {
+	.items-list {
+		width: 50%;
+	}
+	.button {
+		position: fixed;
+	}
+}

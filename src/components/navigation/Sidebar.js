@@ -6,13 +6,25 @@ import Avatar from "../avatar/Avatar";
 import { ReactComponent as AddIcon } from "../../assets/add.svg";
 import { useUserDataContext } from "../../hooks/data/useUserDataContext";
 import MoneyIcon from "../../assets/money.svg";
+import { ReactComponent as MobileNavIcon } from "../../assets/mobile-nav.svg";
+import { ReactComponent as CloseNavIcon } from "../../assets/close.svg";
+import { useState } from "react";
 
 const Sidebar = () => {
 	const { document } = useUserDataContext();
+	const [showSideBar, setShowSideBar] = useState(false);
+
+	const handleCloseNav = () => {
+		setShowSideBar(false);
+	};
 
 	return (
 		<div className={styles.sidebar}>
-			<div className={styles["sidebar-content"]}>
+			<div
+				className={styles["sidebar-content"]}
+				style={{
+					display: showSideBar || window.innerWidth > 600 ? "block" : "none",
+				}}>
 				<div className={styles.user}>
 					{document.photoURL ? (
 						<Avatar src={document.photoURL} />
@@ -26,7 +38,7 @@ const Sidebar = () => {
 						<p className={styles.balance}>
 							Balance: {document && document.balance}$
 						</p>
-						<Link to={"/transactions"}>
+						<Link to={"/transactions"} onClick={handleCloseNav}>
 							<AddIcon fill="#fff" className={styles["add-icon"]} />
 						</Link>
 					</div>
@@ -34,25 +46,31 @@ const Sidebar = () => {
 				<nav className={styles.links}>
 					<ul>
 						<li>
-							<NavLink to="/">
+							<NavLink to="/" onClick={handleCloseNav}>
 								<img src={DashboardIcon} alt="dashboard icon"></img>
 								<span>Games</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/profile">
+							<NavLink to="/profile" onClick={handleCloseNav}>
 								<img src={UserIcon} alt="user icon"></img>
 								<span>Profile</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/transactions">
+							<NavLink to="/transactions" onClick={handleCloseNav}>
 								<img src={MoneyIcon} alt="user icon"></img>
 								<span>Transactions</span>
 							</NavLink>
 						</li>
 					</ul>
 				</nav>
+			</div>
+			<div
+				className={styles["mobile-sidebar"]}
+				onClick={() => setShowSideBar((prev) => !prev)}>
+				{!showSideBar && <MobileNavIcon />}
+				{showSideBar && <CloseNavIcon fill="#ffffff" width={40} />}
 			</div>
 		</div>
 	);
