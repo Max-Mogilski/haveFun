@@ -1,0 +1,26 @@
+.links {
+	width: 100%;
+	padding: 3rem;
+	ul {
+		li {
+			padding: 1rem;
+			a {
+				width: 200%;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				margin-left: 1rem;
+				padding: 0.5rem;
+				text-align: center;
+				text-decoration: none;
+				color: #fff;
+				img {
+					filter: invert(100%);
+				}
+				span {
+					padding: 0 0.5rem;
+				}
+			}
+		}
+	}
+}

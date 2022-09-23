@@ -6,14 +6,14 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import styles from "./App.module.scss";
 // pages&components
 import Navbar from "./components/navigation/Navbar";
-import Sidebar from "./components/navigation/Sidebar";
+import Sidebar from "./components/navigation/sidebar/Sidebar";
 import Notification from "./components/notification/Notification";
 import ScratchCardGame from "./games/scratchCard/ScratchCardGame";
 import AddTransaction from "./pages/addTransaction/AddTransaction";
 import ScratchCardList from "./pages/home/games/scratch-card/scratch-card-list/ScratchCardList";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import Profile from "./pages/profile/Profile";
+import Settings from "./pages/settings/Settings";
 import Singup from "./pages/signup/Singup";
 import Transactions from "./pages/transactions/Transactions";
 
@@ -118,9 +118,9 @@ function App() {
 									)}
 									<Route path="slot-machine" element={<Navigate to="/" />} />
 									<Route path="lucky-wheel" element={<Navigate to="/" />} />
-									<Route path="profile" element={<Profile />} />
 									<Route path="transactions" element={<Transactions />} />
 									<Route path="transactions/add" element={<AddTransaction />} />
+									<Route path="settings" element={<Settings />} />
 								</>
 							) : (
 								<>
@@ -129,7 +129,7 @@ function App() {
 										path="scratch-card"
 										element={<Navigate to="/login" />}
 									/>
-									<Route path="/profile" element={<Navigate to="/login" />} />
+									<Route path="/settings" element={<Navigate to="/login" />} />
 									<Route
 										path="transactions"
 										element={<Navigate to="/login" />}

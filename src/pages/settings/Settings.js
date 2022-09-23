@@ -1,6 +1,6 @@
 import Avatar from "../../components/avatar/Avatar";
-import styles from "./Profile.module.scss";
-import ProfileForm from "./profileForm/ProfileForm";
+import styles from "./Settings.module.scss";
+import SettingsForm from "./settingsForm/SettingsForm";
 import AvatarUpdate from "./updateAvatar/AvatarUpdate";
 import { useEffect, useState } from "react";
 import { useUserDataContext } from "../../hooks/data/useUserDataContext";
@@ -36,7 +36,7 @@ const Profile = () => {
 				)}
 				<AvatarUpdate setError={setError} setSuccess={setSuccess} />
 			</div>
-			<ProfileForm />
+			<SettingsForm />
 		</div>
 	);
 };

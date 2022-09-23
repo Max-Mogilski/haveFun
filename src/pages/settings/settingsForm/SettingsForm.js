@@ -6,7 +6,7 @@ import { useAuthContext } from "../../../hooks/auth/useAuthContext";
 import { useUserDocument } from "../../../hooks/data/useUserDocument";
 import { useUpdateDocument } from "../../../hooks/data/useUpdateDocument";
 import { useNotificationContext } from "../../../hooks/notification/useNotificationContext";
-import styles from "./ProfileForm.module.scss";
+import styles from "./SettingsForm.module.scss";
 
 const ProfileForm = () => {
 	const { user } = useAuthContext();
