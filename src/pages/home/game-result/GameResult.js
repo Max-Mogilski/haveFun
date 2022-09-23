@@ -6,6 +6,8 @@ import styles from "./GameResult.module.scss";
 import WinAmount from "./win-amount/WinAmount";
 import WinMessage from "./win-message/WinMessage";
 
+import ReactDOM from "react-dom";
+
 const GameResult = () => {
 	const { statistics, dispatchGame } = useCurrentGameContex();
 	const navigate = useNavigate();
@@ -17,18 +19,23 @@ const GameResult = () => {
 	};
 
 	return (
-		<div className={styles["result-container"]}>
-			{statistics.win > 0 && (
-				<Confetti width={window.innerWidth} height={window.innerHeight} />
+		<>
+			{ReactDOM.createPortal(
+				<div className={styles["result-container"]}>
+					{statistics.win > 0 && (
+						<Confetti width={window.innerWidth} height={window.innerHeight} />
+					)}
+					<div className={styles.card}>
+						<button onClick={handleClosePopup}>x</button>
+						<div className={styles.content}>
+							<WinMessage multiplier={statistics.multiplier} />
+							<WinAmount amount={statistics.win} />
+						</div>
+					</div>
+				</div>,
+				document.getElementById("modal-root")
 			)}
-			<div className={styles.card}>
-				<button onClick={handleClosePopup}>x</button>
-				<div className={styles.content}>
-					<WinMessage multiplier={statistics.multiplier} />
-					<WinAmount amount={statistics.win} />
-				</div>
-			</div>
-		</div>
+		</>
 	);
 };
 
