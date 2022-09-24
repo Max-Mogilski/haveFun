@@ -27,14 +27,16 @@ export const useSignup = () => {
 				email: user.email,
 				displayName: user.displayName,
 				online: true,
-				lvl: 0,
 				photoURL: "start",
 				accountCreatedAt: Timestamp.fromDate(new Date()),
 				balance: 0,
 				friends: [],
 				notifications: true,
-				gameHistory: [],
 				transactions: [],
+				stats: {
+					totalWon: 0,
+					totalPlayed: 0,
+				},
 			});
 
 			dispatch({ type: ACTIONS.SIGNUP, payload: user });

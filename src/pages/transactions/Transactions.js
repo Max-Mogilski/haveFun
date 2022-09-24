@@ -6,10 +6,13 @@ import TransactionsList from "./transactionsList/TransactionsList";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "../../components/loading/Loading";
+import { useNotificationContext } from "../../hooks/notification/useNotificationContext";
+import { ACTIONS } from "../../actions/notification/Actions";
 
 const Transactions = () => {
 	const { document } = useUserDataContext();
 	const [transactions, setTransactions] = useState(null);
+	const { dispatchNotification } = useNotificationContext();
 
 	useEffect(() => {
 		if (document && document.transactions) {
@@ -35,7 +38,14 @@ const Transactions = () => {
 								<span>Add</span>
 							</button>
 						</Link>
-						<button className="btn">
+						<button
+							className="btn"
+							onClick={() =>
+								dispatchNotification({
+									type: ACTIONS.ERROR,
+									payload: "Coming soon!",
+								})
+							}>
 							<ArrowIcon fill="#8d69f1" className={styles.icon} />
 							<span>Send</span>
 						</button>

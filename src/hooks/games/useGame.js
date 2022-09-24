@@ -46,6 +46,5 @@ export const useGame = () => {
 		},
 		[getArryWithAmountOfItems, calculateMultiplier, dispatchGame, price]
 	);
-
 	return { startGame, endGame, gameResult };
 };

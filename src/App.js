@@ -1,5 +1,4 @@
 import React from "react";
-
 // React router
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // styles
@@ -16,16 +15,19 @@ import Login from "./pages/login/Login";
 import Settings from "./pages/settings/Settings";
 import Singup from "./pages/signup/Singup";
 import Transactions from "./pages/transactions/Transactions";
-
 // hooks
 import { useNotificationContext } from "./hooks/notification/useNotificationContext";
 import { useAuthContext } from "./hooks/auth/useAuthContext";
-
 //game items
-import { items } from "./games-data/scratch-card/data/items";
+import {
+	gameOne,
+	gameTwo,
+	gameThree,
+} from "./games-data/scratch-card/data/items";
 import { useUserDataContext } from "./hooks/data/useUserDataContext";
 import GameResult from "./pages/home/game-result/GameResult";
 import { useCurrentGameContex } from "./hooks/games/useCurrentGameContex";
+import Profile from "./pages/profile/Profile";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
@@ -45,6 +47,7 @@ function App() {
 							{user ? (
 								<>
 									<Route path="/" element={<Home />} />
+									<Route path="profile/:id" element={<Profile />} />
 									<Route
 										path="scratch-card-list"
 										element={<ScratchCardList />}
@@ -55,7 +58,7 @@ function App() {
 												path="/scratch-card-20"
 												element={
 													<ScratchCardGame
-														items={items}
+														items={gameOne}
 														length={9}
 														options={{
 															backGroundColor: "#8d69f1",
@@ -71,7 +74,7 @@ function App() {
 												path="/scratch-card-50"
 												element={
 													<ScratchCardGame
-														items={items}
+														items={gameTwo}
 														length={9}
 														options={{
 															backGroundColor: "#fc466b",
@@ -87,7 +90,7 @@ function App() {
 												path="/scratch-card-100"
 												element={
 													<ScratchCardGame
-														items={items}
+														items={gameThree}
 														length={9}
 														options={{
 															backGroundColor: "#3f5efb",

@@ -42,7 +42,7 @@ const Sidebar = () => {
 						</Link>
 					</div>
 				</div>
-				<LinkList handleCloseNav={handleCloseNav} />
+				<LinkList handleCloseNav={handleCloseNav} userId={document.id} />
 			</div>
 			<div
 				className={styles["mobile-sidebar"]}

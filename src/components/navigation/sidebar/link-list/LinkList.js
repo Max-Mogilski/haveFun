@@ -5,7 +5,7 @@ import SettingsIcon from "../../../../assets/setting.svg";
 import MoneyIcon from "../../../../assets/money.svg";
 import { NavLink } from "react-router-dom";
 
-const LinkList = ({ handleCloseNav }) => {
+const LinkList = ({ handleCloseNav, userId }) => {
 	return (
 		<nav className={styles.links}>
 			<ul>
@@ -16,7 +16,7 @@ const LinkList = ({ handleCloseNav }) => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/profile" onClick={handleCloseNav}>
+					<NavLink to={`/profile/${userId}`} onClick={handleCloseNav}>
 						<img src={UserIcon} alt="user icon"></img>
 						<span>Profile</span>
 					</NavLink>

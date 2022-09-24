@@ -1,0 +1,34 @@
+.info-card {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: calc(50% - 0.5rem);
+	height: 50%;
+	margin-top: 1rem;
+	background: #fff;
+	border-radius: 10px;
+	.circle-icon {
+		width: 8rem;
+		height: 8rem;
+		border-radius: 50%;
+		padding: 0.5rem;
+		margin: 0 1rem 0 1rem;
+	}
+	.info-content {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-direction: column;
+		text-align: left;
+		color: var(--text-color);
+		.data {
+			font-size: 2rem;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.info-card {
+		width: 100%;
+	}
+}

@@ -1,6 +1,7 @@
 import styles from "./Home.module.scss";
 import ScratchIcon from "../../assets/scratchIcon.svg";
 import GamesList from "./games-list/GamesList";
+import QuestionMark from "../../assets/faq.svg";
 
 const Home = () => {
 	const games = [
@@ -12,15 +13,15 @@ const Home = () => {
 			price: null,
 		},
 		{
-			title: "Slot machine",
-			photoURL: ScratchIcon,
+			title: "Coming soon",
+			photoURL: QuestionMark,
 			ref: "slot-machine",
 			isReady: false,
 			price: null,
 		},
 		{
-			title: "Lucky wheel",
-			photoURL: ScratchIcon,
+			title: "Coming soon",
+			photoURL: QuestionMark,
 			ref: "lucky-wheel",
 			isReady: false,
 			price: null,

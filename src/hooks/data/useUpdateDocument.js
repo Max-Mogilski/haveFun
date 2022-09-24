@@ -7,6 +7,7 @@ export const useUpdateDocument = () => {
 	const [isPending, setIsPending] = useState(false);
 
 	const updateDocument = async (collection, document, updatedObj) => {
+		console.log("updating...");
 		setError(null);
 		setIsPending(true);
 		try {
