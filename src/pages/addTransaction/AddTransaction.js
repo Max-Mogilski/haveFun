@@ -7,6 +7,7 @@ import { useUserDataContext } from "../../hooks/data/useUserDataContext";
 import { useNotificationContext } from "../../hooks/notification/useNotificationContext";
 import { useTransaction } from "../../hooks/transactions/useTransaction";
 import styles from "./AddTransaction.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
 	const { document } = useUserDataContext();
@@ -54,7 +55,7 @@ const AddTransaction = () => {
 				balance: document.balance + (Math.round(amount * 100) / 100) * 1000,
 				title: "Money deposit",
 				createdAt: Timestamp.fromDate(new Date()),
-				id: Math.random(),
+				id: uuidv4(),
 			});
 
 			if (error) {

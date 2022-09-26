@@ -14,11 +14,14 @@ export const useSignup = () => {
 	const signup = async (email, password, displayName) => {
 		setError(null);
 		setIsPending(true);
+
 		try {
 			const res = await createUserWithEmailAndPassword(auth, email, password);
+
 			if (!res) {
 				throw new Error("Could not create user!");
 			}
+
 			const { user } = res;
 			await updateProfile(user, { displayName });
 
@@ -42,8 +45,17 @@ export const useSignup = () => {
 			dispatch({ type: ACTIONS.SIGNUP, payload: user });
 		} catch (error) {
 			console.log(error);
+
 			if (!isCancelled) {
-				setError(error.message);
+				if (error) {
+					if (error.code === "auth/email-already-in-use") {
+						setError("Email is already in use");
+					} else if (error.code === "auth/weak-password") {
+						setError("Password must be a at least six characters");
+					} else {
+						setError(error.message);
+					}
+				}
 			}
 		} finally {
 			if (!isCancelled) {

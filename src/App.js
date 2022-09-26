@@ -28,6 +28,7 @@ import { useUserDataContext } from "./hooks/data/useUserDataContext";
 import GameResult from "./pages/home/game-result/GameResult";
 import { useCurrentGameContex } from "./hooks/games/useCurrentGameContex";
 import Profile from "./pages/profile/Profile";
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
 	const { user, authIsReady } = useAuthContext();
@@ -124,12 +125,21 @@ function App() {
 									<Route path="transactions" element={<Transactions />} />
 									<Route path="transactions/add" element={<AddTransaction />} />
 									<Route path="settings" element={<Settings />} />
+									<Route path="*" element={<NotFound />} />
 								</>
 							) : (
 								<>
 									<Route path="/" element={<Navigate to="/login" />} />
 									<Route
 										path="scratch-card"
+										element={<Navigate to="/login" />}
+									/>
+									<Route
+										path="scratch-card-list"
+										element={<Navigate to="/login" />}
+									/>
+									<Route
+										path="profile/:id"
 										element={<Navigate to="/login" />}
 									/>
 									<Route path="/settings" element={<Navigate to="/login" />} />
@@ -147,6 +157,7 @@ function App() {
 								<>
 									<Route path="login" element={<Login />} />
 									<Route path="signup" element={<Singup />} />
+									<Route path="*" element={<Navigate to="/" />} />
 								</>
 							) : (
 								<>

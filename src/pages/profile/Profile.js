@@ -9,6 +9,13 @@ import { ReactComponent as RewardIcon } from "../../assets/reward.svg";
 const Profile = () => {
 	const params = useParams();
 	const { document } = useCustomUserDocument("users", params.id);
+	if (!document) {
+		return (
+			<div className={styles.fallback}>
+				<p>Profile not found!</p>
+			</div>
+		);
+	}
 	return (
 		<div className={styles.profile}>
 			<ProfileHeader userData={document} />

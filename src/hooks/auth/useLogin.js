@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth} from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import { ACTIONS } from "../../actions/auth/Actions";
 import { useAuthContext } from "./useAuthContext";
 import { useUpdateDocument } from "../data/useUpdateDocument";
@@ -25,7 +25,7 @@ export const useLogin = () => {
 		} catch (error) {
 			console.log(error.message);
 			if (!isCancelled) {
-				setError(error.message);
+				setError("Wrong password or email!");
 			}
 		} finally {
 			if (!isCancelled) {

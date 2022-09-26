@@ -5,7 +5,7 @@ import styles from "./Login.module.scss";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { login, isPending } = useLogin();
+	const { login, isPending, error } = useLogin();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(email, password);
@@ -37,6 +37,7 @@ const Login = () => {
 					Loading...
 				</button>
 			)}
+			{error && <p className="error">{error}</p>}
 		</form>
 	);
 };
