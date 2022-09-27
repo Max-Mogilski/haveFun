@@ -11,34 +11,40 @@ const Login = () => {
 		login(email, password);
 	};
 	return (
-		<form className={styles["auth-form"]} onSubmit={handleSubmit}>
-			<h2>Login</h2>
-			<label>
-				<span>email:</span>
-				<input
-					required
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					type="email"
-				/>
-			</label>
-			<label>
-				<span>password:</span>
-				<input
-					required
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					type="password"
-				/>
-			</label>
-			{!isPending && <button className="btn">Login</button>}
-			{isPending && (
-				<button className="btn" disabled>
-					Loading...
-				</button>
-			)}
-			{error && <p className="error">{error}</p>}
-		</form>
+		<div className={styles.container}>
+			<form className={styles["auth-form"]} onSubmit={handleSubmit}>
+				<h2>Login</h2>
+				<label>
+					<span>email:</span>
+					<input
+						required
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						type="email"
+					/>
+				</label>
+				<label>
+					<span>password:</span>
+					<input
+						required
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						type="password"
+					/>
+				</label>
+				{!isPending && <button className="btn">Login</button>}
+				{isPending && (
+					<button className="btn" disabled>
+						Loading...
+					</button>
+				)}
+				{error && <p className="error">{error}</p>}
+			</form>
+			<div className={styles["card-test"]}>
+				<p>Login: test@test.com</p>
+				<p>Password: test@test.com</p>
+			</div>
+		</div>
 	);
 };
 

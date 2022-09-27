@@ -49,10 +49,19 @@ const ProfileForm = () => {
 			});
 			return;
 		}
+
 		if (displayName.length > 15 || email.length > 20) {
 			dispatchNotification({
 				type: ACTIONS.ERROR,
 				payload: "Email or user name is too long!",
+			});
+			return;
+		}
+
+		if (user.email !== email && document.isTesting) {
+			dispatchNotification({
+				type: ACTIONS.ERROR,
+				payload: "You are on testing account, this option is disabled!",
 			});
 			return;
 		}

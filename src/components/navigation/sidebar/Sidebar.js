@@ -22,7 +22,7 @@ const Sidebar = () => {
 			<div
 				className={styles["sidebar-content"]}
 				style={{
-					display: showSideBar || window.innerWidth > 600 ? "" : "none",
+					display: showSideBar || window.innerWidth > 600 ? "block" : "none",
 				}}>
 				<div className={styles.user}>
 					{document.photoURL ? (

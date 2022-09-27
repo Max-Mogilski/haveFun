@@ -5,15 +5,14 @@ export const useUpdateUserStats = () => {
 	const { updateDocument } = useUpdateDocument();
 	const { document } = useUserDataContext();
 
-	const updateUserStats = async (stats) => {
-		const isWon = stats.win > 0 ? true : false;
-
-		// await updateDocument("users", document.id, {
-		// 	stats: {
-		// 		totalWon: isWon ? 1 : 0,
-		// 		totalPlayed: 1,
-		// 	},
-		// });
+	const updateUserStats = async (isWin) => {
+		await updateDocument("users", document.id, {
+			stats: {
+				totalPlayed: document.stats.totalPlayed + 1,
+				totalWon: document.stats.totalWon + isWin,
+			},
+		});
 	};
+
 	return { updateUserStats };
 };

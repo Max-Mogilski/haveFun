@@ -5,6 +5,12 @@
 		flex-grow: 1;
 		padding: 0 0.5rem;
 		width: 70%;
+		.loading-container {
+			width: 15rem;
+			height: 15rem;
+			margin: 5rem auto;
+			border-radius: 50%;
+		}
 	}
 }
 

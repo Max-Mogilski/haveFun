@@ -67,6 +67,7 @@ const Canvas = ({ options, isCanvasEmpty }) => {
 		canvasRef.current.removeEventListener("mousedown", mousedownEvent);
 		canvasRef.current.removeEventListener("mouseup", mouseupEvent);
 		canvasRef.current.removeEventListener("mousemove", mousemoveEvent);
+
 		if (canvasRef) {
 			init();
 		}
