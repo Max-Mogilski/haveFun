@@ -50,13 +50,14 @@
 }
 @media (max-width: 600px) {
 	.sidebar {
+		height: 100%;
 		position: fixed;
 		.mobile-sidebar {
 			display: block;
 		}
 		.sidebar-content {
 			position: fixed;
-			padding-bottom: 1rem;
+			margin-bottom: 1rem;
 		}
 	}
 }
