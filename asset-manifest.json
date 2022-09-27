@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/haveFun/static/css/main.f2041eb1.css",
+    "main.css": "/haveFun/static/css/main.7746f2db.css",
     "main.js": "/haveFun/static/js/main.d6408619.js",
     "static/css/745.9513e488.chunk.css": "/haveFun/static/css/745.9513e488.chunk.css",
     "static/js/745.b6ca2c07.chunk.js": "/haveFun/static/js/745.b6ca2c07.chunk.js",
@@ -43,7 +43,7 @@
     "static/media/mobile-nav.svg": "/haveFun/static/media/mobile-nav.3d6d33dff03e1f8fe32f26ab5a07beac.svg",
     "static/media/arrow.svg": "/haveFun/static/media/arrow.a49005640f757d0ec96a932c26c5d63c.svg",
     "static/media/close.svg": "/haveFun/static/media/close.3338e53b501cbdc001ef59c0ce7d7a3c.svg",
-    "main.f2041eb1.css.map": "/haveFun/static/css/main.f2041eb1.css.map",
+    "main.7746f2db.css.map": "/haveFun/static/css/main.7746f2db.css.map",
     "main.d6408619.js.map": "/haveFun/static/js/main.d6408619.js.map",
     "745.9513e488.chunk.css.map": "/haveFun/static/css/745.9513e488.chunk.css.map",
     "745.b6ca2c07.chunk.js.map": "/haveFun/static/js/745.b6ca2c07.chunk.js.map",
@@ -62,7 +62,7 @@
     "200.b92859e1.chunk.js.map": "/haveFun/static/js/200.b92859e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2041eb1.css",
+    "static/css/main.7746f2db.css",
     "static/js/main.d6408619.js"
   ]
 }
