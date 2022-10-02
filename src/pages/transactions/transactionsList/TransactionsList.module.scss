@@ -4,6 +4,7 @@
 	align-items: center;
 	flex-direction: column;
 	width: 100%;
+	overflow: hidden;
 	.transactions-list {
 		display: flex;
 		justify-content: center;
@@ -17,7 +18,7 @@
 	.transactions-header {
 		width: 100%;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		text-align: center;
 		.transactions-title {

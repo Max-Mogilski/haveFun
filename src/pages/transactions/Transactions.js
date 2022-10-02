@@ -61,7 +61,6 @@ const Transactions = () => {
 					)}
 				</div>
 			</div>
-			<div className={styles["transactions-chart"]}></div>
 		</div>
 	);
 };

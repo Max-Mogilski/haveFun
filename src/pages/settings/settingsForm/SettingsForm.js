@@ -1,6 +1,5 @@
 import { updateEmail, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ACTIONS } from "../../../actions/notification/Actions";
 import { useAuthContext } from "../../../hooks/auth/useAuthContext";
 import { useUserDocument } from "../../../hooks/data/useUserDocument";
@@ -14,7 +13,6 @@ const ProfileForm = () => {
 	const [displayName, setDisplayName] = useState(user && user.displayName);
 	const [email, setEmail] = useState(user && user.email);
 	const { updateDocument, isPending } = useUpdateDocument();
-	const navigate = useNavigate();
 	const { dispatchNotification } = useNotificationContext();
 	const [notifications, setNotifications] = useState(true);
 
@@ -30,8 +28,6 @@ const ProfileForm = () => {
 		if (user.email !== email) {
 			await updateEmail(user, email);
 		}
-
-		navigate("/");
 
 		dispatchNotification({
 			type: ACTIONS.SUCCESS,

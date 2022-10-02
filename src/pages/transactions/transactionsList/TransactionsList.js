@@ -12,12 +12,14 @@ const TransactionsList = ({ transactions }) => {
 				<div className={styles["transactions-title"]}>
 					<p>Transactions</p>
 				</div>
-				<div className={styles["transactions-show"]}>
-					{!showAll && (
-						<button onClick={() => setShowAll(true)}>Show all</button>
-					)}
-					{showAll && <button onClick={() => setShowAll(false)}>Hide</button>}
-				</div>
+				{transactions.length > 2 && (
+					<div className={styles["transactions-show"]}>
+						{!showAll && (
+							<button onClick={() => setShowAll(true)}>Show all</button>
+						)}
+						{showAll && <button onClick={() => setShowAll(false)}>Hide</button>}
+					</div>
+				)}
 			</div>
 			<div className={styles["transactions-list"]}>
 				{transactions && transactions.length !== 0 ? (
