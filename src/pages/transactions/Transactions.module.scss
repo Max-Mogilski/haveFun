@@ -9,8 +9,10 @@
 	.transactions-card {
 		width: 50%;
 		min-height: 40%;
+		max-height: 50%;
 		border-radius: 10px;
 		background-color: #fff;
+		overflow: scroll;
 		.transactions-content {
 			display: flex;
 			justify-content: center;
