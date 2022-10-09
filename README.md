@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+### "HaveFun" online cassino application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My main goal was to create something fun and challenging.
+Whole project took me 1 month of daily work.
 
-## Available Scripts
+Technologies used: **HTML, SCSS, REACT, FIREBASE V9, DATE-FNS, CONFETTI-REACT AND UUID**
 
-In the project directory, you can run:
+Live: https://hero1230.github.io/haveFun/
 
-### `npm start`
+# Functionalities:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Main purpose of application is to provide fun games and excellent UX not for real money.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Scratch card game:
+Game was designed to be scalable. Making completely new scratch card with different items, odds, and amount of tiles is easy.
 
-### `npm test`
+![alt text](https://i.ibb.co/wppym0B/Zrzut-ekranu-2022-10-2-o-02-39-15.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You have to have enough money on your account to buy a game.
 
-### `npm run build`
+You have to get three or four same winning symbols to win.
+Win animations will be displayed only if you scratch all fields.
+If you leave game before finishing you will get reward (if won) automaticaly without animation or any alert.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![alt text](https://i.ibb.co/k2pfYd2/ezgif-com-gif-maker.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+WIN = PRICE * MULTIPLIER
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Profile
 
-### `npm run eject`
+Profile section was made with query parameter which provides ability to add content to application easily.
+That open doors to many features. Now it's easy to implement, for example, function to share user statistics or show frends or other users profiles.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![alt text](https://i.ibb.co/GcD8SP8/Zrzut-ekranu-2022-10-2-o-03-17-06.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Transactions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Ability to show and hide transactions is available only if you have more than three transactions.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![alt text](https://i.ibb.co/7XdT0hw/Zrzut-ekranu-2022-10-2-o-03-23-13.png)
 
-## Learn More
+## Settings
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+In this section user is able to change default avatar or delete current one as well as name, email and notification status.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### If you are on testing account some functions might be unavailable.
 
-### Code Splitting
+![alt text](https://i.ibb.co/H4MSMYF/Zrzut-ekranu-2022-10-2-o-03-31-26.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Notifications
 
-### Analyzing the Bundle Size
+Whole notification system was designed to contain one global notification state.
+Display in one place, dispatch in many places.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![alt text](https://i.ibb.co/yXHVgYB/ezgif-com-gif-maker.gif)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt text](https://i.ibb.co/Yd9Sw5J/ezgif-com-gif-maker.gif)
