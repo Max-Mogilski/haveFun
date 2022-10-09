@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Transaction from "../transaction/Transaction";
 import styles from "./TransactionsList.module.scss";
 
