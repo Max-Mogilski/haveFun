@@ -14,6 +14,8 @@ const Transactions = () => {
 	const [transactions, setTransactions] = useState(null);
 	const { dispatchNotification } = useNotificationContext();
 
+	const [showAll, setShowAll] = useState(false);
+
 	useEffect(() => {
 		if (document && document.transactions) {
 			setTransactions(
@@ -51,9 +53,24 @@ const Transactions = () => {
 						</button>
 					</div>
 				</div>
+				<div className={styles["transactions-header"]}>
+					<div className={styles["transactions-title"]}>
+						<p>Transactions</p>
+					</div>
+					{transactions && transactions.length > 2 && (
+						<div className={styles["transactions-show"]}>
+							{!showAll && (
+								<button onClick={() => setShowAll(true)}>Show all</button>
+							)}
+							{showAll && (
+								<button onClick={() => setShowAll(false)}>Hide</button>
+							)}
+						</div>
+					)}
+				</div>
 				<div className={styles["transactions-content"]}>
 					{document && transactions ? (
-						<TransactionsList transactions={transactions} />
+						<TransactionsList show={showAll} transactions={transactions} />
 					) : (
 						<div className={styles["loading-container"]}>
 							<Loading />
