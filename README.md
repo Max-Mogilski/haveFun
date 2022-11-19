@@ -7,7 +7,7 @@ Technologies used: **HTML, SCSS, REACT, FIREBASE V9, DATE-FNS, CONFETTI-REACT AN
 
 Live: https://hero1230.github.io/haveFun/
 
-### Run locally
+### Run locally:
 
 1. Open your terminal and then type
 
