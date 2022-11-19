@@ -7,6 +7,25 @@ Technologies used: **HTML, SCSS, REACT, FIREBASE V9, DATE-FNS, CONFETTI-REACT AN
 
 Live: https://hero1230.github.io/haveFun/
 
+### Run locally
+
+1. Open your terminal and then type
+
+$ git clone {the url to the GitHub repo}
+
+This clones the repo
+
+2. cd into the new folder and type
+
+$ npm install
+
+This installs the required dependencies
+
+3. To run the React project.
+$ npm start
+
+You are done! Now you can start editing the React project in the new folder that's created.
+
 # Functionalities:
 
 Main purpose of application is to provide fun games and excellent UX not for real money.
