@@ -9,7 +9,7 @@ export const useGame = () => {
 	const { setIsAllowedToPlay } = useUserDataContext();
 	const { document } = useUserDataContext();
 	const { subtractMoney } = useMoney();
-	const { calculateMultiplier, getArryWithAmountOfItems } =
+	const { calculateMultiplier, getObjectWithAmountOfItems } =
 		useCalculateMultiplier();
 	const { dispatchGame, price } = useCurrentGameContex();
 
@@ -32,19 +32,19 @@ export const useGame = () => {
 
 	const gameResult = useCallback(
 		(items) => {
-			const arrayWithAmoutOfItems = getArryWithAmountOfItems(items);
-			const multiplier = calculateMultiplier(arrayWithAmoutOfItems);
+			const objectWithAmoutOfItems = getObjectWithAmountOfItems(items);
+			const multiplier = calculateMultiplier(objectWithAmoutOfItems);
 			dispatchGame({
 				type: ACTIONS.UPDATE_GAME,
 				payload: {
 					price,
 					multiplier,
 					win: price * multiplier,
-					gameItems: arrayWithAmoutOfItems,
+					gameItems: objectWithAmoutOfItems,
 				},
 			});
 		},
-		[getArryWithAmountOfItems, calculateMultiplier, dispatchGame, price]
+		[getObjectWithAmountOfItems, calculateMultiplier, dispatchGame, price]
 	);
 	return { startGame, endGame, gameResult };
 };
