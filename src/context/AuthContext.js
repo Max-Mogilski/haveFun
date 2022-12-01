@@ -31,7 +31,7 @@ export const AuthContextProvider = ({ children }) => {
 			dispatch({ type: ACTIONS.AUTHISREADY, payload: user });
 		});
 		unsub();
-	}, []);
+	}, []); 
 
 	return (
 		<AuthContext.Provider value={{ ...state, dispatch }}>
