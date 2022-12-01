@@ -35,7 +35,7 @@ export const gameOne = [
 		chances: 30,
 		multiplier: [0, 0, 5, 10],
 	},
-	{ name: "piggy", image: PiggyIcon, chances: 78 },
+	{ name: "piggy", image: PiggyIcon, chances: 60 },
 ];
 
 export const gameTwo = [
@@ -57,7 +57,7 @@ export const gameTwo = [
 		chances: 30,
 		multiplier: [0, 0, 5, 10],
 	},
-	{ name: "tomato", image: TomatoIcon, chances: 78 },
+	{ name: "tomato", image: TomatoIcon, chances: 60 },
 ];
 
 export const gameThree = [
@@ -79,5 +79,5 @@ export const gameThree = [
 		chances: 30,
 		multiplier: [0, 0, 5, 10],
 	},
-	{ name: "banjo", image: PickIcon, chances: 78 },
+	{ name: "banjo", image: PickIcon, chances: 60 },
 ];

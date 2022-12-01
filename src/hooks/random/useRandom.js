@@ -7,19 +7,14 @@ export const useRandom = (array, length) => {
 
 		const randomArray = [];
 
-		for (let i = 0; i < length; ) {
-			array.forEach((element) => {
-				if (randomArray.length < length) {
-					const randomNumber = Math.random() * 100;
+		while (randomArray.length !== length) {
+			const randomNumber = Math.random() * 100;
+			const randomItem = array[Math.round(Math.random() * array.length)];
 
-					if (randomNumber < element.chances) {
-						randomArray.push(element);
-					}
+			if (randomItem) {
+				if (randomNumber < randomItem.chances) {
+					randomArray.push(randomItem);
 				}
-			});
-			i++;
-			if (randomArray.length !== length && i === length) {
-				i--;
 			}
 		}
 		return randomArray;
