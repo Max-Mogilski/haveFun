@@ -2,7 +2,7 @@
 	width: 20%;
 	min-height: 100%;
 	z-index: 1;
-	overflow-y: scroll;
+	overflow: hidden;
 	.mobile-sidebar {
 		display: none;
 		position: fixed;
