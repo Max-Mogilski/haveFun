@@ -9,7 +9,6 @@ import { CurrentGameContextProvider } from "./context/CurrentGameContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	// <React.StrictMode>
 	<AuthContextProvider>
 		<UserDataContextProvider>
 			<NotificationContextProvider>
@@ -19,5 +18,4 @@ root.render(
 			</NotificationContextProvider>
 		</UserDataContextProvider>
 	</AuthContextProvider>
-	// </React.StrictMode>
 );

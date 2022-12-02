@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 export const useCalculateMultiplier = () => {
+
 	const getCountedItems = (items) => {
 		const countedItems = {};
 		items.forEach((item) => {
