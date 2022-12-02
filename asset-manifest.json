@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/haveFun/static/css/main.7746f2db.css",
-    "main.js": "/haveFun/static/js/main.5d677ef4.js",
+    "main.css": "/haveFun/static/css/main.4ba49a75.css",
+    "main.js": "/haveFun/static/js/main.42121869.js",
     "static/css/745.9513e488.chunk.css": "/haveFun/static/css/745.9513e488.chunk.css",
     "static/js/745.b8d95cb3.chunk.js": "/haveFun/static/js/745.b8d95cb3.chunk.js",
     "static/css/227.eb1ac3e5.chunk.css": "/haveFun/static/css/227.eb1ac3e5.chunk.css",
@@ -15,7 +15,7 @@
     "static/css/821.8b81e00b.chunk.css": "/haveFun/static/css/821.8b81e00b.chunk.css",
     "static/js/821.cdd2ccae.chunk.js": "/haveFun/static/js/821.cdd2ccae.chunk.js",
     "static/css/677.6bd05417.chunk.css": "/haveFun/static/css/677.6bd05417.chunk.css",
-    "static/js/677.e2b3f8dd.chunk.js": "/haveFun/static/js/677.e2b3f8dd.chunk.js",
+    "static/js/677.21c726f6.chunk.js": "/haveFun/static/js/677.21c726f6.chunk.js",
     "static/js/200.b92859e1.chunk.js": "/haveFun/static/js/200.b92859e1.chunk.js",
     "static/media/piggy.svg": "/haveFun/static/media/piggy.d5a110af38e67f48bde7d5440f9fdc8d.svg",
     "static/media/tomato.svg": "/haveFun/static/media/tomato.2be62cc48c6b36402c55b4004601fb0d.svg",
@@ -43,8 +43,8 @@
     "static/media/mobile-nav.svg": "/haveFun/static/media/mobile-nav.3d6d33dff03e1f8fe32f26ab5a07beac.svg",
     "static/media/arrow.svg": "/haveFun/static/media/arrow.a49005640f757d0ec96a932c26c5d63c.svg",
     "static/media/close.svg": "/haveFun/static/media/close.3338e53b501cbdc001ef59c0ce7d7a3c.svg",
-    "main.7746f2db.css.map": "/haveFun/static/css/main.7746f2db.css.map",
-    "main.5d677ef4.js.map": "/haveFun/static/js/main.5d677ef4.js.map",
+    "main.4ba49a75.css.map": "/haveFun/static/css/main.4ba49a75.css.map",
+    "main.42121869.js.map": "/haveFun/static/js/main.42121869.js.map",
     "745.9513e488.chunk.css.map": "/haveFun/static/css/745.9513e488.chunk.css.map",
     "745.b8d95cb3.chunk.js.map": "/haveFun/static/js/745.b8d95cb3.chunk.js.map",
     "227.eb1ac3e5.chunk.css.map": "/haveFun/static/css/227.eb1ac3e5.chunk.css.map",
@@ -58,11 +58,11 @@
     "821.8b81e00b.chunk.css.map": "/haveFun/static/css/821.8b81e00b.chunk.css.map",
     "821.cdd2ccae.chunk.js.map": "/haveFun/static/js/821.cdd2ccae.chunk.js.map",
     "677.6bd05417.chunk.css.map": "/haveFun/static/css/677.6bd05417.chunk.css.map",
-    "677.e2b3f8dd.chunk.js.map": "/haveFun/static/js/677.e2b3f8dd.chunk.js.map",
+    "677.21c726f6.chunk.js.map": "/haveFun/static/js/677.21c726f6.chunk.js.map",
     "200.b92859e1.chunk.js.map": "/haveFun/static/js/200.b92859e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7746f2db.css",
-    "static/js/main.5d677ef4.js"
+    "static/css/main.4ba49a75.css",
+    "static/js/main.42121869.js"
   ]
 }
