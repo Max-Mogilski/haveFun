@@ -5,7 +5,7 @@ Whole project took me 1 month of daily work.
 
 Technologies used: **HTML, SCSS, REACT, FIREBASE V9, DATE-FNS, CONFETTI-REACT AND UUID**
 
-Live: https://hero1230.github.io/haveFun/
+Live: https://max-mogilski.github.io
 
 ### Run locally:
 
